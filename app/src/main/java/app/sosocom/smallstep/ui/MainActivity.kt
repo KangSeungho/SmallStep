@@ -1,10 +1,12 @@
 package app.sosocom.smallstep.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import app.sosocom.smallstep.R
 import app.sosocom.smallstep.base.BaseActivity
 import app.sosocom.smallstep.databinding.ActivityMainBinding
+import app.sosocom.smallstep.ui.emotion_diary.EmotionCalendarActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutResId() = R.layout.activity_main
@@ -26,6 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun onClickEmotionDiary(view: View) {
-
+        val intent = Intent(this, EmotionCalendarActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -60,7 +60,7 @@ abstract class BaseActivity<T: ViewDataBinding> : AppCompatActivity() {
     }
 
     private fun popActivity() {
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
     // endregion LifeCycle

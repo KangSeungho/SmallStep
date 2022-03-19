@@ -13,4 +13,7 @@
     <color name="gray_97">#FF979797</color>
     <color name="gray_9b">#FF9B9B9B</color>
     <color name="gray_eb">#FFEBEBEB</color>
+
+    <color name="pastel_purple">#FFD291BC</color>
+    <color name="pastel_orange">#FFFFC8A2</color>
 </resources>
