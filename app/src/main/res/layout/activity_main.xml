@@ -4,38 +4,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_light_gray"
         android:orientation="vertical"
+        android:padding="10dp"
         tools:context=".ui.MainActivity">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/gray_eb"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.applandeo.materialcalendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:datePicker="true"
+                app:disabledDaysLabelsColor="@color/gray_9b"
+                app:headerColor="@color/pastel_purple"
+                app:selectionColor="@color/pastel_purple"
+                app:selectionLabelColor="@color/white"
+                app:todayLabelColor="@color/black" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_todo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:shadowColor="@color/gray_eb"
             android:shadowDx="0"
             android:shadowDy="2"
             android:onClick="onClickTodo"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/card_calendar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="center_horizontal"
                 android:padding="12dp">
 
                 <TextView
                     android:id="@+id/todo_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/todo_title"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -43,12 +71,11 @@
 
                 <TextView
                     android:id="@+id/todo_info"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/todo_info"
                     android:textSize="12sp"
-                    android:textColor="@color/gray_97" />
+                    android:textColor="@color/gray_97"
+                    tools:text="1/5"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -57,8 +84,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:shadowColor="@color/gray_eb"
             android:shadowDx="0"
             android:shadowDy="2"
@@ -66,20 +91,21 @@
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_todo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="center_horizontal"
                 android:padding="12dp">
 
                 <TextView
                     android:id="@+id/happy_point_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/happy_point_title"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -87,12 +113,11 @@
 
                 <TextView
                     android:id="@+id/happy_point_info"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/happy_point_info"
                     android:textSize="12sp"
-                    android:textColor="@color/gray_97" />
+                    android:textColor="@color/gray_97"
+                    tools:text="4.2"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -101,8 +126,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:shadowColor="@color/gray_eb"
             android:shadowDx="0"
             android:shadowDy="2"
@@ -110,33 +133,25 @@
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_happy_point"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="center_horizontal"
                 android:padding="12dp">
 
                 <TextView
                     android:id="@+id/good_and_new_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/good_and_new_title"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/good_and_new_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/good_and_new_info"
-                    android:textSize="12sp"
-                    android:textColor="@color/gray_97" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -145,8 +160,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:shadowColor="@color/gray_eb"
             android:shadowDx="0"
             android:shadowDy="2"
@@ -154,35 +167,38 @@
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_good_and_new"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="center_horizontal"
                 android:padding="12dp">
 
                 <TextView
                     android:id="@+id/emotion_diary_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/emotion_diary_title"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/emotion_diary_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/emotion_diary_info"
-                    android:textSize="12sp"
-                    android:textColor="@color/gray_97" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pastel_purple"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/ic_add_white"
+            app:tint="@color/white"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -17,9 +17,6 @@
             android:name=".ui.emotion_diary.EmotionEditActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.emotion_diary.EmotionCalendarActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity

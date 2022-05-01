@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SmallStep</string>
 
-    <string name="todo_title">TODO 만들기</string>
+    <string name="todo_title">To-Do</string>
     <string name="todo_info">오늘 스케줄의 빈틈을 이용해 하는 일을 정의해보아요.</string>
 
     <string name="happy_point_title">오늘의 행복지수</string>
