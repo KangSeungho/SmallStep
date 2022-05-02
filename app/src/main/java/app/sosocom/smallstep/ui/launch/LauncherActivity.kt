@@ -25,10 +25,7 @@ class LauncherActivity : BaseActivity<ActivityLauncherBinding>() {
 
         lifecycleScope.launch {
             delay(2500)
-            val intent = Intent(this@LauncherActivity, MainActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            }
+            val intent = Intent(this@LauncherActivity, MainActivity::class.java)
             startActivity(intent)
         }
     }
