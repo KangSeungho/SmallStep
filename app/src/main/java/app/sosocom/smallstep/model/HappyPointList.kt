@@ -11,6 +11,9 @@ data class HappyPoint(
     // 행동
     val content: String,
 
+    // 설명
+    val comment: String,
+
     // 점수 (0.0 ~ 5.0)
     @FloatRange(from = 0.0, to = 5.0)
     val point: Float

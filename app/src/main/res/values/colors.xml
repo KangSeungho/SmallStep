@@ -16,4 +16,9 @@
 
     <color name="pastel_purple">#FFD291BC</color>
     <color name="pastel_orange">#FFFFC8A2</color>
+
+    <color name="red">#FFFF0000</color>
+    <color name="green">#FF00FF00</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="yellow">#FFFFFF00</color>
 </resources>

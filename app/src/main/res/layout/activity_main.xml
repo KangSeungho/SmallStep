@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="app.sosocom.smallstep.ui.MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,6 +52,7 @@
             android:shadowDx="0"
             android:shadowDy="2"
             android:onClick="onClickTodo"
+            android:visibleIf="@{vm.selDayWrites.todoList != null}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
@@ -88,6 +95,7 @@
             android:shadowDx="0"
             android:shadowDy="2"
             android:onClick="onClickHappyPoint"
+            android:visibleIf="@{vm.selDayWrites.happyPointList != null}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
@@ -130,6 +138,7 @@
             android:shadowDx="0"
             android:shadowDy="2"
             android:onClick="onClickGoodAndNew"
+            android:visibleIf="@{vm.selDayWrites.goodAndNew != null}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
@@ -164,6 +173,7 @@
             android:shadowDx="0"
             android:shadowDy="2"
             android:onClick="onClickEmotionDiary"
+            android:visibleIf="@{vm.selDayWrites.diary != null}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
