@@ -39,7 +39,8 @@
                 app:headerColor="@color/pastel_purple"
                 app:selectionColor="@color/pastel_purple"
                 app:selectionLabelColor="@color/white"
-                app:todayLabelColor="@color/black" />
+                app:todayLabelColor="@color/black"
+                app:eventsEnabled="true" />
 
         </com.google.android.material.card.MaterialCardView>
 

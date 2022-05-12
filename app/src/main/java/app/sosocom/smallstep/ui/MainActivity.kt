@@ -29,9 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun loadData() {
         val selectedDate = binding.calendarView.selectedDates[0]
 
-        CoroutineScope(Dispatchers.IO).launch {
+//        CoroutineScope(Dispatchers.IO).launch {
             viewModel.getMonthWrites(selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH))
-        }
+//        }
     }
 
     private fun initUI() {
@@ -42,10 +42,30 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.monthWrites.observe(this) {
             it ?: return@observe
 
+            val calendar = binding.calendarView.currentPageDate.clone() as Calendar
             val eventsList = LinkedList<EventDay>()
             for(dayWrites in it) {
-                // TODO : 날짜 별 EventDay 추가 요망
+                val day = calendar.clone() as Calendar
+                day.set(Calendar.DAY_OF_MONTH, dayWrites.day)
+
+                // 투두 이벤트 추가
+                if(dayWrites.todoList != null)
+                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_todo))
+
+                // HappyPoint 이벤트 추가
+                if(dayWrites.happyPointList != null)
+                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_happy_point))
+
+                // GoodAndNew 이벤트 추가
+                if(dayWrites.goodAndNew != null)
+                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_good_and_new))
+
+                // 감정일기 이벤트 추가
+                if(dayWrites.diary != null)
+                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_diary))
             }
+
+            binding.calendarView.setEvents(eventsList)
         }
     }
 

@@ -14,7 +14,7 @@ class MainViewModel : ViewModel() {
     private val _selDayWrites = MutableLiveData<DayWrites>()
     val selDayWrites: LiveData<DayWrites> = _selDayWrites
 
-    suspend fun getMonthWrites(year: Int, month: Int) {
+    fun getMonthWrites(year: Int, month: Int) {
         // TODO : 아래는 임시 데이터
         _monthWrites.value = listOf(
             DayWrites(
