@@ -48,17 +48,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 val day = calendar.clone() as Calendar
                 day.set(Calendar.DAY_OF_MONTH, dayWrites.day)
 
-                // 투두 이벤트 추가
-                if(dayWrites.todoList != null)
-                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_todo))
-
-                // HappyPoint 이벤트 추가
-                if(dayWrites.happyPointList != null)
-                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_happy_point))
-
-                // GoodAndNew 이벤트 추가
-                if(dayWrites.goodAndNew != null)
-                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_good_and_new))
+//                // 투두 이벤트 추가
+//                if(dayWrites.todoList != null)
+//                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_todo))
+//
+//                // HappyPoint 이벤트 추가
+//                if(dayWrites.happyPointList != null)
+//                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_happy_point))
+//
+//                // GoodAndNew 이벤트 추가
+//                if(dayWrites.goodAndNew != null)
+//                    eventsList.add(EventDay(day.clone() as Calendar, R.drawable.icon_calendar_good_and_new))
 
                 // 감정일기 이벤트 추가
                 if(dayWrites.diary != null)
