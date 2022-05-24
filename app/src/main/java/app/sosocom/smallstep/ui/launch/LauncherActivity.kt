@@ -8,9 +8,11 @@ import app.sosocom.smallstep.base.BaseActivity
 import app.sosocom.smallstep.databinding.ActivityLauncherBinding
 import app.sosocom.smallstep.ui.MainActivity
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LauncherActivity : BaseActivity<ActivityLauncherBinding>() {
     override fun getLayoutResId() = R.layout.activity_launcher
 

@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import app.sosocom.smallstep.model.*
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor() : ViewModel() {
     // 월별 작성 데이터
     private val _monthWrites = MutableLiveData<List<DayWrites>>()
     val monthWrites: LiveData<List<DayWrites>> = _monthWrites

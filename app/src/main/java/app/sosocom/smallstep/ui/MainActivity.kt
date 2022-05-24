@@ -9,11 +9,13 @@ import app.sosocom.smallstep.base.BaseActivity
 import app.sosocom.smallstep.databinding.ActivityMainBinding
 import app.sosocom.smallstep.ui.emotion_diary.EmotionDiaryActivity
 import com.applandeo.materialcalendarview.EventDay
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutResId() = R.layout.activity_main
     private val viewModel by viewModels<MainViewModel>()
