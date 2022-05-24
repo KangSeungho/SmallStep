@@ -9,6 +9,7 @@ import app.sosocom.smallstep.R
 import app.sosocom.smallstep.base.BaseActivity
 import app.sosocom.smallstep.databinding.ActivityMainBinding
 import app.sosocom.smallstep.ui.emotion_diary.DiaryActivity
+import app.sosocom.smallstep.ui.emotion_diary.DiaryEditActivity
 import app.sosocom.smallstep.util.ExtraConstants
 import com.applandeo.materialcalendarview.EventDay
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,26 +43,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.calendarView.setOnDayClickListener { eventDay ->
             viewModel.setSelDay(eventDay.calendar.get(Calendar.DAY_OF_MONTH))
         }
-
-        // 추가 버튼
-        binding.floatingActionButton.setOnClickListener {
-            val isSelected = !it.isSelected
-            it.isSelected = isSelected
-
-            when(isSelected) {
-                // 추가 버튼 선택
-                true -> {
-                    ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", -180f).apply { start() }
-                    ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 0f, 45f).apply { start() }
-                }
-
-                // 추가 버튼 해제
-                false -> {
-                    ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", 0f).apply { start() }
-                    ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 45f, 0f).apply { start() }
-                }
-            }
-        }
     }
 
     private fun initObserver() {
@@ -94,7 +75,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             binding.calendarView.setEvents(eventsList)
         }
     }
-
     fun onClickTodo(view: View) {
 
     }
@@ -115,6 +95,36 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         val intent = Intent(this, DiaryActivity::class.java)
         intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
+        startActivity(intent)
+    }
+
+    /**
+     * 추가 버튼 클릭
+     */
+    fun onClickFloatingButton(view: View) {
+        val isSelected = !view.isSelected
+        view.isSelected = isSelected
+
+        when(isSelected) {
+            // 추가 버튼 선택
+            true -> {
+                ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", -180f).apply { start() }
+                ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 0f, 45f).apply { start() }
+            }
+
+            // 추가 버튼 해제
+            false -> {
+                ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", 0f).apply { start() }
+                ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 45f, 0f).apply { start() }
+            }
+        }
+    }
+
+    /**
+     * 일기 추가 버튼 클릭
+     */
+    fun onClickAddDiary(view: View) {
+        val intent = Intent(this, DiaryEditActivity::class.java)
         startActivity(intent)
     }
 }
