@@ -1,5 +1,6 @@
 package app.sosocom.smallstep.ui
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -40,6 +41,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         // 날짜 선택
         binding.calendarView.setOnDayClickListener { eventDay ->
             viewModel.setSelDay(eventDay.calendar.get(Calendar.DAY_OF_MONTH))
+        }
+
+        // 추가 버튼
+        binding.floatingActionButton.setOnClickListener {
+            val isSelected = !it.isSelected
+            it.isSelected = isSelected
+
+            when(isSelected) {
+                // 추가 버튼 선택
+                true -> {
+                    ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", -180f).apply { start() }
+                    ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 0f, 45f).apply { start() }
+                }
+
+                // 추가 버튼 해제
+                false -> {
+                    ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", 0f).apply { start() }
+                    ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 45f, 0f).apply { start() }
+                }
+            }
         }
     }
 
