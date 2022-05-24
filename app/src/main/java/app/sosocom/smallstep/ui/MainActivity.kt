@@ -22,6 +22,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding.lifecycleOwner = this
+        binding.vm = viewModel
+
         loadData()
         initUI()
         initObserver()
@@ -36,7 +39,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun initUI() {
-
+        // 날짜 선택
+        binding.calendarView.setOnDayClickListener { eventDay ->
+            viewModel.setSelDay(eventDay.calendar.get(Calendar.DAY_OF_MONTH))
+        }
     }
 
     private fun initObserver() {
@@ -45,7 +51,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
             val calendar = binding.calendarView.currentPageDate.clone() as Calendar
             val eventsList = LinkedList<EventDay>()
-            for(dayWrites in it) {
+            for(dayWrites in it.values) {
                 val day = calendar.clone() as Calendar
                 day.set(Calendar.DAY_OF_MONTH, dayWrites.day)
 
@@ -82,6 +88,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     }
 
+    /**
+     * 일기 항목 클릭
+     */
     fun onClickEmotionDiary(view: View) {
         val intent = Intent(this, EmotionDiaryActivity::class.java)
         startActivity(intent)

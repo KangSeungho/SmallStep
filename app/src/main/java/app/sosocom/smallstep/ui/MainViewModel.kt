@@ -10,12 +10,12 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor() : ViewModel() {
     // 월별 작성 데이터
-    private val _monthWrites = MutableLiveData<List<DayWrites>>()
-    val monthWrites: LiveData<List<DayWrites>> = _monthWrites
+    private val _monthWrites = MutableLiveData<Map<Int, DayWrites>>()
+    val monthWrites: LiveData<Map<Int, DayWrites>> = _monthWrites
 
     // 선택된 날의 작성 데이터
-    private val _selDayWrites = MutableLiveData<DayWrites>()
-    val selDayWrites: LiveData<DayWrites> = _selDayWrites
+    private val _selDayWrites = MutableLiveData<DayWrites?>()
+    val selDayWrites: LiveData<DayWrites?> = _selDayWrites
 
     fun getMonthWrites(year: Int, month: Int) {
         // TODO : 아래는 임시 데이터
@@ -50,11 +50,11 @@ class MainViewModel @Inject constructor() : ViewModel() {
                 null,
                 Diary("오늘은 어린이날!", "오늘은 어린이날이다. 하지만 어린이들보다 어른들이 더 좋아하는 날이다.", 12345L)
             )
-        )
+        ).associateBy { it.day }
     }
 
     fun setSelDay(day: Int) {
-        val dayWrites = monthWrites.value?.get(day) ?: return
+        val dayWrites = monthWrites.value?.get(day)
         _selDayWrites.value = dayWrites
     }
 }
