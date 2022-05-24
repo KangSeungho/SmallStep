@@ -5,9 +5,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.emotion_diary.DiaryActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="vm"
+            type="app.sosocom.smallstep.ui.emotion_diary.DiaryViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_diary_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.diary.title}"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="오늘은 너무 즐거운 날이다."/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/gray_9b" />
+
+            <TextView
+                android:id="@+id/tv_diary_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.diary.content}"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                tools:text="내용입니다."/>
+        </LinearLayout>
+    </ScrollView>
 </layout>

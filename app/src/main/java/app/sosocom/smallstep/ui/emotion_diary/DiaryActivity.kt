@@ -19,6 +19,7 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
         super.onCreate(savedInstanceState)
 
         binding.lifecycleOwner = this
+        binding.vm = viewModel
 
         loadData()
     }
