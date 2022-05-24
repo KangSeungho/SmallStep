@@ -11,9 +11,7 @@ import androidx.fragment.app.Fragment
 import app.sosocom.smallstep.util.Log
 import app.sosocom.smallstep.util.LogTag
 
-abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
-    @LayoutRes
-    abstract fun getLayoutResId(): Int
+abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutID: Int) : Fragment() {
 
     private var _binding: T? = null
     protected val binding: T get() = _binding!!
@@ -31,7 +29,7 @@ abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(LogTag.LIFE_CYCLE, "onCreateView ${this::class.java.simpleName}")
-        _binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
+        _binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
         return binding.root
     }
 

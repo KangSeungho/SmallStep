@@ -13,9 +13,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LauncherActivity : BaseActivity<ActivityLauncherBinding>() {
-    override fun getLayoutResId() = R.layout.activity_launcher
-
+class LauncherActivity : BaseActivity<ActivityLauncherBinding>(R.layout.activity_launcher) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()

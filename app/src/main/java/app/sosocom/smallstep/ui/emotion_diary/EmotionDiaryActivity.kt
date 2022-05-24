@@ -7,9 +7,7 @@ import app.sosocom.smallstep.databinding.ActivityEmotionDiaryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EmotionDiaryActivity : BaseActivity<ActivityEmotionDiaryBinding>() {
-    override fun getLayoutResId() = R.layout.activity_emotion_diary
-
+class EmotionDiaryActivity : BaseActivity<ActivityEmotionDiaryBinding>(R.layout.activity_emotion_diary) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

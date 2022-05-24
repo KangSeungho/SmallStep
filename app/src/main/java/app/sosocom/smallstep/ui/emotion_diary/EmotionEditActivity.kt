@@ -7,9 +7,7 @@ import app.sosocom.smallstep.databinding.ActivityEmotionEditBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EmotionEditActivity : BaseActivity<ActivityEmotionEditBinding>() {
-    override fun getLayoutResId() = R.layout.activity_emotion_edit
-
+class EmotionEditActivity : BaseActivity<ActivityEmotionEditBinding>(R.layout.activity_emotion_edit) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

@@ -16,8 +16,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun getLayoutResId() = R.layout.activity_main
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
