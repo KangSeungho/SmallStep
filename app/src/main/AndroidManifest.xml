@@ -31,10 +31,10 @@
 
         <!--region 감정일기 화면 -->
         <activity
-            android:name=".ui.emotion_diary.EmotionDiaryActivity"
+            android:name=".ui.emotion_diary.DiaryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.emotion_diary.EmotionEditActivity"
+            android:name=".ui.emotion_diary.DiaryEditActivity"
             android:exported="false" />
         <!--endregion 감정일기 화면 -->
     </application>

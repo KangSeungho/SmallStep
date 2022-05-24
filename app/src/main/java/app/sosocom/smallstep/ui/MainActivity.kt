@@ -7,12 +7,10 @@ import androidx.activity.viewModels
 import app.sosocom.smallstep.R
 import app.sosocom.smallstep.base.BaseActivity
 import app.sosocom.smallstep.databinding.ActivityMainBinding
-import app.sosocom.smallstep.ui.emotion_diary.EmotionDiaryActivity
+import app.sosocom.smallstep.ui.emotion_diary.DiaryActivity
+import app.sosocom.smallstep.util.ExtraConstants
 import com.applandeo.materialcalendarview.EventDay
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.util.*
 
 @AndroidEntryPoint
@@ -92,7 +90,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
      * 일기 항목 클릭
      */
     fun onClickEmotionDiary(view: View) {
-        val intent = Intent(this, EmotionDiaryActivity::class.java)
+        val diary = viewModel.selDayWrites.value?.diary ?: return
+
+        val intent = Intent(this, DiaryActivity::class.java)
+        intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
         startActivity(intent)
     }
 }
