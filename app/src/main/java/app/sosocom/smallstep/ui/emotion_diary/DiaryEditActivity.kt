@@ -1,6 +1,7 @@
 package app.sosocom.smallstep.ui.emotion_diary
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import app.sosocom.smallstep.R
 import app.sosocom.smallstep.base.BaseActivity
@@ -38,5 +39,9 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
                 viewModel.content.value = diary.content
             }
         }
+    }
+
+    fun onClickSave(view: View) {
+
     }
 }
