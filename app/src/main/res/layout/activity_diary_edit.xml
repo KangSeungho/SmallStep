@@ -46,13 +46,13 @@
             tools:text="내용입니다."/>
 
         <Button
+            android:id="@+id/btn_save_diary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@{vm.register ? @string/register : @string/modify}"
             android:textSize="15sp"
             android:textColor="@color/white"
-            android:onClick="onClickSave"
             tools:text="@string/register" />
     </LinearLayout>
 </layout>

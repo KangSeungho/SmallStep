@@ -21,6 +21,7 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
         binding.vm = viewModel
 
         loadData()
+        initUI()
     }
 
     private fun loadData() {
@@ -41,7 +42,10 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
         }
     }
 
-    fun onClickSave(view: View) {
+    private fun initUI() {
+        // 등록/수정 버튼 클릭
+        binding.btnSaveDiary.setOnClickListener {
 
+        }
     }
 }
