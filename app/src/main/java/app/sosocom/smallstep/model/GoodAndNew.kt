@@ -1,5 +1,8 @@
 package app.sosocom.smallstep.model
 
+/**
+ * Good And New 정보
+ */
 data class GoodAndNew(
     // 좋은 일 혹은 새로운 일
     val content: String,
