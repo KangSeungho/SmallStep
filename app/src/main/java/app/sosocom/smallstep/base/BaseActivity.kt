@@ -1,5 +1,6 @@
 package app.sosocom.smallstep.base
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.LayoutRes
@@ -14,6 +15,8 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutID: Int) : 
 
     private var _binding: T? = null
     protected val binding: T get() = _binding!!
+
+    protected val activityContext: Context get() = this
 
     // region LifeCycle
 
