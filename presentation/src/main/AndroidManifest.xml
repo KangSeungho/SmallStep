@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.sosocom.smallstep.presentation">
+
+    <application>
+        <!-- 시작 화면 -->
+        <activity
+            android:name="app.sosocom.smallstep.presentation.ui.launch.LauncherActivity"
+            android:exported="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 메인 화면 -->
+        <activity
+            android:name="app.sosocom.smallstep.presentation.ui.MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+
+        <!--region 감정일기 화면 -->
+        <activity
+            android:name="app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryActivity"
+            android:exported="false" />
+        <activity
+            android:name="app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryEditActivity"
+            android:exported="false" />
+        <!--endregion 감정일기 화면 -->
+    </application>
+</manifest>

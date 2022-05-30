@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SmallStep"
 include ':app'
+include ':presentation'
+include ':domain'
+include ':domain'
+include ':data'

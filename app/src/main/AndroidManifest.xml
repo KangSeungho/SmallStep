@@ -9,34 +9,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmallStep">
-
-        <!-- 시작 화면 -->
-        <activity
-            android:name=".ui.launch.LauncherActivity"
-            android:exported="true"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- 메인 화면 -->
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false"
-            android:launchMode="singleTask" />
-
-        <!--region 감정일기 화면 -->
-        <activity
-            android:name=".ui.emotion_diary.DiaryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.emotion_diary.DiaryEditActivity"
-            android:exported="false" />
-        <!--endregion 감정일기 화면 -->
-    </application>
+        android:theme="@style/Theme.SmallStep" />
 
 </manifest>

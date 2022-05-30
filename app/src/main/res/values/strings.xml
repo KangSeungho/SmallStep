@@ -1,18 +1,3 @@
 <resources>
     <string name="app_name">SmallStep</string>
-
-    <string name="register">등록</string>
-    <string name="modify">수정</string>
-
-    <string name="todo_title">To-Do</string>
-    <string name="todo_info">오늘 스케줄의 빈틈을 이용해 하는 일을 정의해보아요.</string>
-
-    <string name="happy_point_title">오늘의 행복지수</string>
-    <string name="happy_point_info">오늘 내가 한 행동 하나하나를 행복지수로 표시해보아요.</string>
-
-    <string name="good_and_new_title">Good and New</string>
-    <string name="good_and_new_info">24시간 이내에 있었던 좋은 일 혹은 처음 했거나 경험한 일을 적어요.</string>
-
-    <string name="emotion_diary_title">감정일기</string>
-    <string name="emotion_diary_info">오늘 있었던 일들을 통해 느낀 내 감정을 정리해요.</string>
 </resources>

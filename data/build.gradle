@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -10,19 +10,11 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "app.sosocom.smallstep"
         minSdk 24
         targetSdk 31
 
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -31,26 +23,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
 }
 
 dependencies {
-    implementation project(":data")
-    implementation project(":domain")
-    implementation project(":presentation")
-
-    // AndroidX
-    implementation (AndroidX.APP_COMPAT)
+    implementation project(':domain')
 
     // Dagger-hilt
-    implementation (DaggerHilt.SDK)
-    kapt (DaggerHilt.COMPILER)
+    implementation(DaggerHilt.SDK)
+    kapt(DaggerHilt.COMPILER)
 }

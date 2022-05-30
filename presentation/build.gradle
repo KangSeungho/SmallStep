@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -10,19 +10,11 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "app.sosocom.smallstep"
         minSdk 24
         targetSdk 31
 
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,11 +24,15 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -45,12 +41,34 @@ android {
 dependencies {
     implementation project(":data")
     implementation project(":domain")
-    implementation project(":presentation")
 
     // AndroidX
+    implementation (AndroidX.CORE)
     implementation (AndroidX.APP_COMPAT)
+    implementation (AndroidX.CONSTRAINT_LAYOUT)
+    implementation (AndroidX.MATERIAL)
+    implementation (AndroidX.ACTIVITY_KTX)
+    implementation (AndroidX.FRAGMENT_KTX)
+
+    // AndroidLifeCycle
+    implementation (AndroidLifeCycle.VIEW_MODEL)
+    implementation (AndroidLifeCycle.LIVEDATA_KTX)
+
+    // Test
+    testImplementation "junit:junit:"
+
+    // Android Test
+    androidTestImplementation (AndroidTest.EXT_JUNIT)
+    androidTestImplementation (AndroidTest.ESPRESSO_CORE)
 
     // Dagger-hilt
     implementation (DaggerHilt.SDK)
     kapt (DaggerHilt.COMPILER)
+
+    // Glide
+    implementation (Glide.SDK)
+    annotationProcessor (Glide.COMPILER)
+
+    // material calendarView
+    implementation (CalendarView.APPLANDEO_SDK)
 }
