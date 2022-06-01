@@ -39,6 +39,13 @@ object Glide {
     const val COMPILER = "com.github.bumptech.glide:compiler:$version"
 }
 
+object Room {
+    private const val version = "2.4.2"
+
+    const val SDK = "androidx.room:room-ktx:$version"
+    const val COMPILER = "androidx.room:room-compiler:$version"
+}
+
 object CalendarView {
     const val APPLANDEO_SDK = "com.applandeo:material-calendar-view:1.7.0"
 }
