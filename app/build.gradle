@@ -53,4 +53,8 @@ dependencies {
     // Dagger-hilt
     implementation (DaggerHilt.SDK)
     kapt (DaggerHilt.COMPILER)
+
+    // Room
+    implementation (Room.SDK)
+    kapt (Room.COMPILER)
 }
