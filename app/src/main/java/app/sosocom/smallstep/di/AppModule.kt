@@ -1,6 +1,6 @@
 package app.sosocom.smallstep.di
 
-import DiaryRepositoryImpl
+import app.sosocom.smallstep.data.repository.DiaryRepositoryImpl
 import android.content.Context
 import androidx.room.Room
 import app.sosocom.smallstep.data.data_source.Database

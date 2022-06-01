@@ -1,3 +1,5 @@
+package app.sosocom.smallstep.data.repository
+
 import app.sosocom.smallstep.data.Mapper
 import app.sosocom.smallstep.data.data_source.DiaryDao
 import app.sosocom.smallstep.domain.model.Diary
