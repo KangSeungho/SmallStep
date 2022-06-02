@@ -3,7 +3,9 @@ package app.sosocom.smallstep.presentation.base
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -65,4 +67,7 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutID: Int) : 
     }
 
     // endregion LifeCycle
+
+    fun toast(@StringRes msgRes: Int, duration: Int = Toast.LENGTH_SHORT) = toast(getString(msgRes), duration)
+    fun toast(msg: String, duration: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, msg, duration).show()
 }

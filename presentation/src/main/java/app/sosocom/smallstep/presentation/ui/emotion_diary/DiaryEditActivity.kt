@@ -44,7 +44,21 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
     private fun initUI() {
         // 등록/수정 버튼 클릭
         binding.btnSaveDiary.setOnClickListener {
+            val title = viewModel.title.value
+            val content = viewModel.content.value
 
+            if(title == null) {
+                toast(R.string.diary_input_title_empty)
+                return@setOnClickListener
+            }
+
+            if(content == null) {
+                toast(R.string.diary_input_content_empty)
+                return@setOnClickListener
+            }
+
+            viewModel.saveDiary(title, content)
+            viewModel.resetAll()
         }
     }
 }

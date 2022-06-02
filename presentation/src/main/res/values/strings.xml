@@ -12,6 +12,8 @@
     <string name="good_and_new_title">Good and New</string>
     <string name="good_and_new_info">24시간 이내에 있었던 좋은 일 혹은 처음 했거나 경험한 일을 적어요.</string>
 
-    <string name="emotion_diary_title">감정일기</string>
-    <string name="emotion_diary_info">오늘 있었던 일들을 통해 느낀 내 감정을 정리해요.</string>
+    <string name="diary_title">감정일기</string>
+    <string name="diary_info">오늘 있었던 일들을 통해 느낀 내 감정을 정리해요.</string>
+    <string name="diary_input_title_empty">제목을 입력해주세요.</string>
+    <string name="diary_input_content_empty">내용을 입력해주세요.</string>
 </resources>
