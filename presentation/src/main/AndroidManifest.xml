@@ -23,10 +23,10 @@
 
         <!--region 감정일기 화면 -->
         <activity
-            android:name="app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryActivity"
+            android:name="app.sosocom.smallstep.presentation.ui.diary.DiaryActivity"
             android:exported="false" />
         <activity
-            android:name="app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryEditActivity"
+            android:name="app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity"
             android:exported="false" />
         <!--endregion 감정일기 화면 -->
     </application>

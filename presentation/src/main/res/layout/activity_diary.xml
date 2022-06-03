@@ -8,7 +8,7 @@
     <data>
         <variable
             name="vm"
-            type="app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryViewModel" />
+            type="app.sosocom.smallstep.presentation.ui.diary.DiaryViewModel" />
     </data>
 
     <ScrollView

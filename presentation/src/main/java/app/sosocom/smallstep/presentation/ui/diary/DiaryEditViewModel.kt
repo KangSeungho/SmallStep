@@ -1,4 +1,4 @@
-package app.sosocom.smallstep.presentation.ui.emotion_diary
+package app.sosocom.smallstep.presentation.ui.diary
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

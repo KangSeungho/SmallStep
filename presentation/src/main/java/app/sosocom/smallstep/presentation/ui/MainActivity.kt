@@ -8,8 +8,8 @@ import androidx.activity.viewModels
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.databinding.ActivityMainBinding
-import app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryActivity
-import app.sosocom.smallstep.presentation.ui.emotion_diary.DiaryEditActivity
+import app.sosocom.smallstep.presentation.ui.diary.DiaryActivity
+import app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import com.applandeo.materialcalendarview.EventDay
 import dagger.hilt.android.AndroidEntryPoint
