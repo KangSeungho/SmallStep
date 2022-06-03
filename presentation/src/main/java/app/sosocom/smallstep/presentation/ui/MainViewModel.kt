@@ -36,7 +36,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
                     125124L
                 ),
                 GoodAndNew("퇴근하고 이발소가기 위해 전동 킥보드를 탔는데 재밌었다!", 1L, 12345L),
-                Diary("신난다~!", "내일 모레는 어린이날이다!", 12345L)
+                Diary(title = "신난다~!", content = "내일 모레는 어린이날이다!", createAt = 12345L)
             ),
             DayWrites(
                 5,
@@ -48,7 +48,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
                     123),
                 null,
                 null,
-                Diary("오늘은 어린이날!", "오늘은 어린이날이다. 하지만 어린이들보다 어른들이 더 좋아하는 날이다.", 12345L)
+                Diary(title = "오늘은 어린이날!", content = "오늘은 어린이날이다. 하지만 어린이들보다 어른들이 더 좋아하는 날이다.", createAt = 12345L)
             )
         ).associateBy { it.day }
     }
