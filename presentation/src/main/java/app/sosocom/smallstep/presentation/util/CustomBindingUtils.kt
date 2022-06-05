@@ -8,3 +8,8 @@ import androidx.databinding.BindingAdapter
 fun View.setVisibleIf(visible: Boolean?) {
     isVisible = visible ?: false
 }
+
+@BindingAdapter("android:goneIf")
+fun View.setGoneIf(isGone: Boolean?) {
+    isVisible = !(isGone ?: false)
+}
