@@ -12,6 +12,7 @@ import app.sosocom.smallstep.presentation.ui.diary.DiaryActivity
 import app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import com.applandeo.materialcalendarview.EventDay
+import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,11 +38,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         val selectedDate = binding.calendarView.selectedDates[0]
 
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.getMonthWrites(selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH))
+            viewModel.getMonthWrites(selectedDate[Calendar.YEAR], selectedDate[Calendar.MONTH])
         }
     }
 
     private fun initUI() {
+        // 년/월 이동
+        val pageChangeListener = OnCalendarPageChangeListener {
+            val currentPage = binding.calendarView.currentPageDate
+
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.getMonthWrites(currentPage[Calendar.YEAR], currentPage[Calendar.MONTH])
+                binding.calendarView.selectedDates[0] = binding.calendarView.currentPageDate
+            }
+        }
+        binding.calendarView.setOnPreviousPageChangeListener(pageChangeListener)
+        binding.calendarView.setOnForwardPageChangeListener(pageChangeListener)
+
         // 날짜 선택
         binding.calendarView.setOnDayClickListener { eventDay ->
             viewModel.setSelDay(eventDay.calendar.get(Calendar.DAY_OF_MONTH))

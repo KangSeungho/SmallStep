@@ -21,7 +21,7 @@ class MainViewModel @Inject constructor(
     val selDayWrites: LiveData<DayWrites?> = _selDayWrites
 
     suspend fun getMonthWrites(year: Int, month: Int) {
-        _monthWrites.postValue(dayWriteQueryUseCase.invoke())
+        _monthWrites.postValue(dayWriteQueryUseCase.invoke(year, month))
     }
 
     fun setSelDay(day: Int) {

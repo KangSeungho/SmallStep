@@ -6,5 +6,5 @@ import javax.inject.Inject
 class DiaryQueryUseCase @Inject constructor(
     private val repository: DiaryRepository
 ) {
-    suspend operator fun invoke() = repository.getAllDiary()
+    suspend operator fun invoke(dateTimeRange: LongRange) = repository.getAllDiary(dateTimeRange)
 }

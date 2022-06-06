@@ -7,8 +7,10 @@ import javax.inject.Inject
 class DayWriteQueryUseCase @Inject constructor(
     private val diaryUseCase: DiaryQueryUseCase
 ) {
-    suspend operator fun invoke(): Map<Int, DayWrites> {
-        val diaryList = diaryUseCase()
+    suspend operator fun invoke(year: Int, month: Int): Map<Int, DayWrites> {
+        val dateTimeRange = getDateTimeRange(year, month)
+
+        val diaryList = diaryUseCase(dateTimeRange)
 
         val response = HashMap<Int, DayWrites>()
         for(diary in diaryList) {
@@ -20,5 +22,16 @@ class DayWriteQueryUseCase @Inject constructor(
         }
 
         return response
+    }
+
+    private fun getDateTimeRange(year: Int, month: Int): LongRange {
+        val startTime = Calendar.getInstance().apply {
+            set(year, month, 1)
+        }.timeInMillis
+        val endTime = Calendar.getInstance().apply {
+            set(year, month+1, 1)
+        }.timeInMillis
+
+        return startTime..endTime
     }
 }

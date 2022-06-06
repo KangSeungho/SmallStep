@@ -12,7 +12,7 @@ interface DiaryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDiary(diary: DiaryEntity)
 
-    @Query("SELECT * from diary")
-    suspend fun getAllDiary(): List<DiaryEntity>
+    @Query("SELECT * from diary where :startTime <= baseDate and baseDate <= :endTime")
+    suspend fun getAllDiary(startTime: Long, endTime: Long): List<DiaryEntity>
 
 }
