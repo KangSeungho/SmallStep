@@ -78,7 +78,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         // 일기 추가 버튼
         binding.btnAddDiary.setOnClickListener {
+            // 추가 플로팅 버튼 닫기 처리
+            binding.floatingActionButton.performClick()
+
+            val diary = viewModel.selDayWrites.value?.diary
+
             val intent = Intent(this, DiaryEditActivity::class.java)
+            intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
             startActivity(intent)
         }
     }
@@ -111,6 +117,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
 
             binding.calendarView.setEvents(eventsList)
+
+            // 기본으로 선택된 날짜의 정보로 세팅한다.
+            val selectedDate = binding.calendarView.selectedDates[0]
+            viewModel.setSelDay(selectedDate.get(Calendar.DAY_OF_MONTH))
         }
     }
 }

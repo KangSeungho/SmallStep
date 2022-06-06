@@ -26,6 +26,6 @@ class MainViewModel @Inject constructor(
 
     fun setSelDay(day: Int) {
         val dayWrites = monthWrites.value?.get(day)
-        _selDayWrites.value = dayWrites
+        _selDayWrites.postValue(dayWrites)
     }
 }
