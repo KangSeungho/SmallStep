@@ -13,6 +13,9 @@ import app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import com.applandeo.materialcalendarview.EventDay
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
 @AndroidEntryPoint
@@ -33,9 +36,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun loadData() {
         val selectedDate = binding.calendarView.selectedDates[0]
 
-//        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             viewModel.getMonthWrites(selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH))
-//        }
+        }
     }
 
     private fun initUI() {

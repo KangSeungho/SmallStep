@@ -5,8 +5,8 @@ package app.sosocom.smallstep.domain.model
  */
 data class DayWrites(
     val day: Int,
-    val todoList: TodoList?,
-    val happyPointList: HappyPointList?,
-    val goodAndNew: GoodAndNew?,
-    val diary: Diary?
+    var todoList: TodoList? = null,
+    var happyPointList: HappyPointList? = null,
+    var goodAndNew: GoodAndNew? = null,
+    var diary: Diary? = null
 )

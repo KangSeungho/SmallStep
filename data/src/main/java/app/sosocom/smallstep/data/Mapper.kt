@@ -11,4 +11,12 @@ object Mapper {
             content = diary.content,
             createAt = diary.createAt
         )
+
+    fun convertDiaryEntityToEntity(diaryEntity: DiaryEntity) =
+        Diary(
+            id = diaryEntity.id,
+            title = diaryEntity.title,
+            content = diaryEntity.content,
+            createAt = diaryEntity.createAt
+        )
 }
