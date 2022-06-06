@@ -12,7 +12,7 @@ class DayWriteQueryUseCase @Inject constructor(
 
         val response = HashMap<Int, DayWrites>()
         for(diary in diaryList) {
-            val day = getDay(diary.createAt)
+            val day = diary.baseDate.get(Calendar.DAY_OF_MONTH)
             val dayWrites = response.getOrDefault(day, DayWrites(day))
 
             dayWrites.diary = diary
@@ -20,11 +20,5 @@ class DayWriteQueryUseCase @Inject constructor(
         }
 
         return response
-    }
-
-    private fun getDay(timeStamp: Long): Int {
-        return Calendar.getInstance().apply {
-            timeInMillis = timeStamp
-        }.get(Calendar.DAY_OF_MONTH)
     }
 }

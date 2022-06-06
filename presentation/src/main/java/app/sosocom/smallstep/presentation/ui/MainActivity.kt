@@ -85,6 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
             val intent = Intent(this, DiaryEditActivity::class.java)
             intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
+            intent.putExtra(ExtraConstants.EXTRA_DATE, binding.calendarView.selectedDates[0])
             startActivity(intent)
         }
     }

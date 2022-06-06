@@ -7,6 +7,7 @@ import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.usecase.DiaryInsertUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,8 +16,7 @@ class DiaryEditViewModel @Inject constructor(
 ) : ViewModel() {
     val title = MutableLiveData<String>()       // 제목
     val content = MutableLiveData<String>()     // 내용
-
-    var beforeDiary: Diary? = null
+    lateinit var baseDate: Calendar             // 기준 날짜
 
     var isRegister = false                      // 등록 여부
 
@@ -30,7 +30,8 @@ class DiaryEditViewModel @Inject constructor(
             val diary = Diary(
                 title = title,
                 content = content,
-                createAt = beforeDiary?.createAt ?: System.currentTimeMillis()
+                baseDate = baseDate,
+                createdAt = Calendar.getInstance()
             )
 
             diaryEditUseCase(diary)
