@@ -20,11 +20,6 @@ class DiaryEditViewModel @Inject constructor(
 
     var isRegister = false                      // 등록 여부
 
-    fun resetAll() {
-        this.title.value = ""
-        this.content.value = ""
-    }
-
     fun saveDiary(title: String, content: String) {
         viewModelScope.launch {
             val diary = Diary(

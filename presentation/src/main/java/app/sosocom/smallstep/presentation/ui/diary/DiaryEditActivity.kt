@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.presentation.R
+import app.sosocom.smallstep.presentation.base.CustomAlertDialog
 import app.sosocom.smallstep.presentation.databinding.ActivityDiaryEditBinding
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,7 +61,11 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
             }
 
             viewModel.saveDiary(title, content)
-            viewModel.resetAll()
+
+            CustomAlertDialog(this)
+                .setMessage(R.string.diary_save_success)
+                .setOnClickListener { finish() }
+                .show()
         }
     }
 }

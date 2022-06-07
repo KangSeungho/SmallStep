@@ -2,6 +2,8 @@
 <resources>
     <string name="register">등록</string>
     <string name="modify">수정</string>
+    <string name="cancel">취소</string>
+    <string name="ok">확인</string>
 
     <string name="todo_title">To-Do</string>
     <string name="todo_info">오늘 스케줄의 빈틈을 이용해 하는 일을 정의해보아요.</string>
@@ -16,4 +18,5 @@
     <string name="diary_info">오늘 있었던 일들을 통해 느낀 내 감정을 정리해요.</string>
     <string name="diary_input_title_empty">제목을 입력해주세요.</string>
     <string name="diary_input_content_empty">내용을 입력해주세요.</string>
+    <string name="diary_save_success">일기 저장이 완료되었습니다.</string>
 </resources>
