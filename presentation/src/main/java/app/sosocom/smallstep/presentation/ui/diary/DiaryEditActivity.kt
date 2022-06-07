@@ -60,11 +60,17 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
                 return@setOnClickListener
             }
 
-            viewModel.saveDiary(title, content)
-
             CustomAlertDialog(this)
-                .setMessage(R.string.diary_save_success)
-                .setOnClickListener { finish() }
+                .setMessage(R.string.save_ask)
+                .isCancel(true)
+                .setOnClickListener {
+                    viewModel.saveDiary(title, content)
+
+                    CustomAlertDialog(this)
+                        .setMessage(R.string.diary_save_success)
+                        .setOnClickListener { finish() }
+                        .show()
+                }
                 .show()
         }
     }

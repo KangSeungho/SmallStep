@@ -8,8 +8,6 @@
         android:layout_height="wrap_content"
         android:padding="0.5dp"
         app:cardBackgroundColor="@color/alert_bg"
-        app:strokeWidth="1dp"
-        app:strokeColor="@color/black"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
