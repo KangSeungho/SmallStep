@@ -17,15 +17,23 @@
         android:orientation="vertical"
         android:padding="10dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/gray_9b"
+            app:setFormatterDateText="@{vm.baseDate}"
+            tools:text="2022년 6월 8일 수요일" />
+
         <EditText
             android:id="@+id/tv_diary_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/title"
             android:text="@={vm.title}"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            tools:text="오늘은 너무 즐거운 날이다."/>
+            android:textStyle="bold"/>
 
         <View
             android:layout_width="match_parent"
@@ -40,10 +48,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="top"
+            android:hint="@string/content_info"
             android:text="@={vm.content}"
             android:textSize="14sp"
-            android:textColor="@color/black"
-            tools:text="내용입니다."/>
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/btn_save_diary"
