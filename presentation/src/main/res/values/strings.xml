@@ -20,6 +20,7 @@
 
     <string name="diary_title">감정일기</string>
     <string name="diary_info">오늘 있었던 일들을 통해 느낀 내 감정을 정리해요.</string>
+    <string name="diary_cannot_write">아쉽지만 미래의 일기는 쓸 수 없어요.</string>
     <string name="diary_input_title_empty">제목을 입력해주세요.</string>
     <string name="diary_input_content_empty">내용을 입력해주세요.</string>
     <string name="diary_save_success">일기 저장이 완료되었습니다.</string>

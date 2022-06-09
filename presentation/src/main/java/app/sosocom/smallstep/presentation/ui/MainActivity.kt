@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
+import app.sosocom.smallstep.presentation.base.CustomAlertDialog
 import app.sosocom.smallstep.presentation.databinding.ActivityMainBinding
 import app.sosocom.smallstep.presentation.ui.diary.DiaryActivity
 import app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity
@@ -93,6 +94,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.btnAddDiary.setOnClickListener {
             // 추가 플로팅 버튼 닫기 처리
             binding.floatingActionButton.performClick()
+
+            // 일기는 미래 날짜를 미리 쓸 수 없음
+            if(System.currentTimeMillis() < binding.calendarView.selectedDates[0].timeInMillis) {
+                CustomAlertDialog(this)
+                    .setMessage(R.string.diary_cannot_write)
+                    .show()
+                return@setOnClickListener
+            }
 
             val diary = viewModel.selDayWrites.value?.diary
 
