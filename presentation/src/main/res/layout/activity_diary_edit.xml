@@ -61,6 +61,7 @@
             android:text="@{vm.register ? @string/register : @string/modify}"
             android:textSize="15sp"
             android:textColor="@color/white"
+            android:enabled="@{vm.title.length() > 0 &amp;&amp; vm.content.length() > 0}"
             tools:text="@string/register" />
     </LinearLayout>
 </layout>
