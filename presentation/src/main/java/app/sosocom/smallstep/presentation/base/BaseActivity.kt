@@ -9,9 +9,9 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import app.sosocom.smallstep.domain.util.Log
+import app.sosocom.smallstep.domain.util.LogTag
 import app.sosocom.smallstep.presentation.R
-import app.sosocom.smallstep.presentation.util.Log
-import app.sosocom.smallstep.presentation.util.LogTag
 
 abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutID: Int) : AppCompatActivity() {
 

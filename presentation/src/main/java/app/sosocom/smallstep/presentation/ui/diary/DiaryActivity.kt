@@ -3,12 +3,12 @@ package app.sosocom.smallstep.presentation.ui.diary
 import android.os.Bundle
 import androidx.activity.viewModels
 import app.sosocom.smallstep.domain.model.Diary
+import app.sosocom.smallstep.domain.util.Log
+import app.sosocom.smallstep.domain.util.LogTag
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.databinding.ActivityDiaryBinding
 import app.sosocom.smallstep.presentation.util.ExtraConstants
-import app.sosocom.smallstep.presentation.util.Log
-import app.sosocom.smallstep.presentation.util.LogTag
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

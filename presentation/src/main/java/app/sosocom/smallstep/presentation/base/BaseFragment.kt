@@ -10,8 +10,8 @@ import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import app.sosocom.smallstep.presentation.util.Log
-import app.sosocom.smallstep.presentation.util.LogTag
+import app.sosocom.smallstep.domain.util.Log
+import app.sosocom.smallstep.domain.util.LogTag
 
 abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutID: Int) : Fragment() {
 

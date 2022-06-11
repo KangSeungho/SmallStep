@@ -1,6 +1,6 @@
-package app.sosocom.smallstep.presentation.util
+package app.sosocom.smallstep.domain.util
 
-import app.sosocom.smallstep.presentation.BuildConfig
+import app.sosocom.smallstep.domain.BuildConfig
 
 /**
  * 로그 태그
