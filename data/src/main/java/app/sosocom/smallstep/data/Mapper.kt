@@ -2,6 +2,7 @@ package app.sosocom.smallstep.data
 
 import app.sosocom.smallstep.data.entity.DiaryEntity
 import app.sosocom.smallstep.domain.model.Diary
+import java.time.LocalDate
 import java.util.*
 
 object Mapper {
@@ -10,7 +11,7 @@ object Mapper {
             id = diary.id,
             title = diary.title,
             content = diary.content,
-            baseDate = diary.baseDate.timeInMillis,
+            baseDate = diary.baseDate.toEpochDay(),
             createdAt = diary.createdAt.timeInMillis
         )
 
@@ -19,7 +20,7 @@ object Mapper {
             id = diaryEntity.id,
             title = diaryEntity.title,
             content = diaryEntity.content,
-            baseDate = Calendar.getInstance().apply { timeInMillis = diaryEntity.baseDate },
+            baseDate = LocalDate.ofEpochDay(diaryEntity.baseDate),
             createdAt = Calendar.getInstance().apply { timeInMillis = diaryEntity.createdAt }
         )
 }

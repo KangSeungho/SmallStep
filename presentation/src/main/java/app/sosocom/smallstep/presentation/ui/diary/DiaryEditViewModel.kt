@@ -7,6 +7,7 @@ import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.usecase.DiaryInsertUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
 
@@ -16,7 +17,7 @@ class DiaryEditViewModel @Inject constructor(
 ) : ViewModel() {
     val title = MutableLiveData<String>()       // 제목
     val content = MutableLiveData<String>()     // 내용
-    lateinit var baseDate: Calendar             // 기준 날짜
+    lateinit var baseDate: LocalDate            // 기준 날짜
 
     var isRegister = false                      // 등록 여부
 

@@ -4,7 +4,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 @BindingAdapter("android:visibleIf")
@@ -13,8 +14,8 @@ fun View.setVisibleIf(visible: Boolean?) {
 }
 
 @BindingAdapter("setFormatterDateText")
-fun setFormatterDateText(view: TextView, calendar: Calendar?) {
-    calendar ?: return
+fun setFormatterDateText(view: TextView, localDate: LocalDate?) {
+    localDate ?: return
 
-    view.text = SimpleDateFormat("YYYY년 MM월 dd일 E요일", Locale.KOREA).format(calendar.time)
+    view.text = localDate.format(DateTimeFormatter.ofPattern("YYYY년 MM월 dd일 E요일", Locale.KOREA))
 }

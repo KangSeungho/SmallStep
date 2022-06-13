@@ -9,6 +9,7 @@ import app.sosocom.smallstep.presentation.base.CustomAlertDialog
 import app.sosocom.smallstep.presentation.databinding.ActivityDiaryEditBinding
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
 import java.util.*
 
 @AndroidEntryPoint
@@ -26,7 +27,7 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
     }
 
     private fun loadData() {
-        viewModel.baseDate = intent.getSerializableExtra(ExtraConstants.EXTRA_DATE) as Calendar
+        viewModel.baseDate = intent.getSerializableExtra(ExtraConstants.EXTRA_DATE) as LocalDate
         val diary = intent.getParcelableExtra<Diary>(ExtraConstants.EXTRA_DIARY)
 
         when(diary) {

@@ -43,11 +43,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun loadData() {
-        val selectedDate = Calendar.getInstance()
-
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.getMonthWrites(selectedDate[Calendar.YEAR], selectedDate[Calendar.MONTH])
-            customDayBinder.selectedDate = LocalDate.now()
+            val now = LocalDate.now()
+            viewModel.getMonthWrites(now.year, now.monthValue)
+            viewModel.setSelectedDate(now)
+            customDayBinder.selectedDate = now
         }
     }
 
@@ -84,7 +84,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
                 // 데이터 로드
                 CoroutineScope(Dispatchers.IO).launch {
-                    viewModel.getMonthWrites(month.year, month.month-1)
+                    viewModel.getMonthWrites(month.year, month.month)
                 }
             }
 
@@ -140,19 +140,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             binding.floatingActionButton.performClick()
 
             // 일기는 미래 날짜를 미리 쓸 수 없음
-//            if(System.currentTimeMillis() < binding.calendarView.selectedDates[0].timeInMillis) {
-//                CustomAlertDialog(this)
-//                    .setMessage(R.string.diary_cannot_write)
-//                    .show()
-//                return@setOnClickListener
-//            }
-//
-//            val diary = viewModel.selDayWrites.value?.diary
-//
-//            val intent = Intent(this, DiaryEditActivity::class.java)
-//            intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
-//            intent.putExtra(ExtraConstants.EXTRA_DATE, binding.calendarView.selectedDates[0])
-//            startActivity(intent)
+            if(LocalDate.now() < customDayBinder.selectedDate) {
+                CustomAlertDialog(this)
+                    .setMessage(R.string.diary_cannot_write)
+                    .show()
+                return@setOnClickListener
+            }
+
+            val diary = viewModel.selDayWrites.value?.diary
+
+            val intent = Intent(this, DiaryEditActivity::class.java)
+            intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
+            intent.putExtra(ExtraConstants.EXTRA_DATE, customDayBinder.selectedDate)
+            startActivity(intent)
         }
     }
 
