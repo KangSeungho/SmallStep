@@ -17,11 +17,11 @@ import app.sosocom.smallstep.presentation.util.ExtraConstants
 import app.sosocom.smallstep.presentation.util.daysOfWeekFromLocale
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.previous
-import com.kizitonwose.calendarview.utils.yearMonth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import java.time.YearMonth
 import java.util.*
 
@@ -47,6 +47,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.getMonthWrites(selectedDate[Calendar.YEAR], selectedDate[Calendar.MONTH])
+            customDayBinder.selectedDate = LocalDate.now()
         }
     }
 
@@ -94,9 +95,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             dayBinder = customDayBinder
 
             // 날짜 선택
-            customDayBinder.setOnDayClickListener { date ->
-                viewModel.setSelectedDate(date)
-                notifyMonthChanged(date.date.yearMonth)
+            customDayBinder.setOnDayClickListener { beforeDate, afterDate ->
+                if (beforeDate != null) {
+                    notifyDateChanged(beforeDate)
+                }
+                notifyDateChanged(afterDate)
+
+                viewModel.setSelectedDate(afterDate)
             }
         }
 

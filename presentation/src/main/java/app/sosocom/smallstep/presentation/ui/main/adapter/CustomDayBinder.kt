@@ -8,6 +8,7 @@ import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
+import java.time.LocalDate
 
 class CustomDayBinder : DayBinder<CustomDayBinder.DayViewContainer> {
     private var dataMap = emptyMap<Int, DayWrites>()
@@ -15,13 +16,18 @@ class CustomDayBinder : DayBinder<CustomDayBinder.DayViewContainer> {
         dataMap = data
     }
 
-    private var selectedDate: CalendarDay? = null
-    fun setSelectedDate(date: CalendarDay) {
-        selectedDate = date
+    var selectedDate: LocalDate? = null
+    set(value) {
+        val before = field
+        field = value
+
+        if (value != null) {
+            onDayClickListener?.invoke(before, value)
+        }
     }
 
-    private var onDayClickListener: ((CalendarDay) -> Unit)? = null
-    fun setOnDayClickListener(listener: (CalendarDay) -> Unit) {
+    private var onDayClickListener: ((LocalDate?, LocalDate) -> Unit)? = null
+    fun setOnDayClickListener(listener: (LocalDate?, LocalDate) -> Unit) {
         onDayClickListener = listener
     }
 
@@ -39,15 +45,14 @@ class CustomDayBinder : DayBinder<CustomDayBinder.DayViewContainer> {
 
             binding.item = if(day.owner == DayOwner.THIS_MONTH) dataMap[day.day] else null
             binding.isThisMonth = (day.owner == DayOwner.THIS_MONTH)
-            binding.isSelected = (day == selectedDate)
+            binding.isSelected = (day.date == selectedDate)
 
             binding.textDay.text = day.date.dayOfMonth.toString()
 
             // 클릭
             binding.root.setOnClickListener {
                 if(day.owner == DayOwner.THIS_MONTH) {
-                    setSelectedDate(day)
-                    onDayClickListener?.invoke(day)
+                    selectedDate = day.date
                 }
             }
         }
