@@ -17,7 +17,7 @@
 
         <!-- 메인 화면 -->
         <activity
-            android:name="app.sosocom.smallstep.presentation.ui.MainActivity"
+            android:name="app.sosocom.smallstep.presentation.ui.main.MainActivity"
             android:exported="false"
             android:launchMode="singleTask" />
 

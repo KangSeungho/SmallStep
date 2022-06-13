@@ -6,7 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.databinding.ActivityLauncherBinding
-import app.sosocom.smallstep.presentation.ui.MainActivity
+import app.sosocom.smallstep.presentation.ui.main.MainActivity
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay

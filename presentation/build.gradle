@@ -69,5 +69,5 @@ dependencies {
     annotationProcessor (Glide.COMPILER)
 
     // material calendarView
-    implementation (CalendarView.APPLANDEO_SDK)
+    implementation (CalendarView.KIZITONWOSE_CALENDAR_VIEW)
 }

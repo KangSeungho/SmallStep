@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sun_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="일" />
+
+        <TextView
+            android:id="@+id/mon_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="월" />
+
+        <TextView
+            android:id="@+id/tue_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="화" />
+
+        <TextView
+            android:id="@+id/wed_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="수" />
+
+        <TextView
+            android:id="@+id/thu_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="목" />
+
+        <TextView
+            android:id="@+id/fri_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="금" />
+
+        <TextView
+            android:id="@+id/sat_text"
+            style="@style/monthHeaderTextStyle"
+            android:text="토" />
+
+    </LinearLayout>
+</layout>

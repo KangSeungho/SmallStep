@@ -47,5 +47,5 @@ object Room {
 }
 
 object CalendarView {
-    const val APPLANDEO_SDK = "com.applandeo:material-calendar-view:1.7.0"
+    const val KIZITONWOSE_CALENDAR_VIEW = "com.github.kizitonwose:CalendarView:1.0.4"
 }
