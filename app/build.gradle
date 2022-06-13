@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "app.sosocom.smallstep"
-        minSdk 24
+        minSdk 26
         targetSdk 31
 
         versionCode 1
