@@ -23,7 +23,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
-import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -45,9 +44,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun loadData() {
         CoroutineScope(Dispatchers.IO).launch {
             val now = LocalDate.now()
+
             viewModel.getMonthWrites(now.year, now.monthValue)
-            viewModel.setSelectedDate(now)
-            customDayBinder.selectedDate = now
         }
     }
 
@@ -166,6 +164,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             // 갱신
             binding.calendarView.findFirstVisibleMonth()?.let { month ->
                 binding.calendarView.notifyMonthChanged(month.yearMonth)
+            }
+
+            // 오늘 날짜로 초기 데이터 세티
+            if(viewModel.selDayWrites.value == null) {
+                viewModel.setSelectedDate(LocalDate.now())
+                customDayBinder.selectedDate = LocalDate.now()
             }
         }
     }
