@@ -1,7 +1,9 @@
 package app.sosocom.smallstep.presentation.ui.diary
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.presentation.R
@@ -9,8 +11,8 @@ import app.sosocom.smallstep.presentation.base.CustomAlertDialog
 import app.sosocom.smallstep.presentation.databinding.ActivityDiaryEditBinding
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.util.*
 
 @AndroidEntryPoint
 class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activity_diary_edit) {
@@ -65,12 +67,20 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
                 .setMessage(R.string.save_ask)
                 .isCancel(true)
                 .setOnClickListener {
-                    viewModel.saveDiary(title, content)
+                    lifecycleScope.launch {
+                        val diary = viewModel.saveDiary(title, content)
 
-                    CustomAlertDialog(this)
-                        .setMessage(R.string.diary_save_success)
-                        .setOnClickListener { finish() }
-                        .show()
+                        CustomAlertDialog(activityContext)
+                            .setMessage(R.string.diary_save_success)
+                            .setOnClickListener {
+                                val intent = Intent().apply {
+                                    putExtra(ExtraConstants.EXTRA_DIARY, diary)
+                                }
+                                setResult(RESULT_OK, intent)
+                                finish()
+                            }
+                            .show()
+                    }
                 }
                 .show()
         }

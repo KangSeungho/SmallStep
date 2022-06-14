@@ -58,7 +58,7 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutID: Int) : 
         popActivity()
     }
 
-    private fun pushActivity() {
+    fun pushActivity() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 

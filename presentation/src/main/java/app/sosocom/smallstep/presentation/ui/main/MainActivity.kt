@@ -4,7 +4,9 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.CustomAlertDialog
@@ -29,6 +31,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val viewModel by viewModels<MainViewModel>()
 
     private val customDayBinder = CustomDayBinder()
+
+    private val resultDiary = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        when(it.resultCode) {
+            RESULT_OK -> {
+                val diary = it.data?.getParcelableExtra<Diary>(ExtraConstants.EXTRA_DIARY) ?: return@registerForActivityResult
+
+                viewModel.addDiary(diary)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +89,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 binding.textCurrentMonth.text = title
 
                 // 데이터 초기화
-                customDayBinder.setDataMap(emptyMap())
+                customDayBinder.setDataMap(mutableMapOf())
                 notifyMonthChanged(month.yearMonth)
 
                 // 데이터 로드
@@ -150,7 +162,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             val intent = Intent(this, DiaryEditActivity::class.java)
             intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
             intent.putExtra(ExtraConstants.EXTRA_DATE, customDayBinder.selectedDate)
-            startActivity(intent)
+            resultDiary.launch(intent)
+            pushActivity()
         }
     }
 

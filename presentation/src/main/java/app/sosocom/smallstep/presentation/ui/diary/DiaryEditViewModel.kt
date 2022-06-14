@@ -2,11 +2,9 @@ package app.sosocom.smallstep.presentation.ui.diary
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.usecase.DiaryInsertUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
@@ -21,16 +19,16 @@ class DiaryEditViewModel @Inject constructor(
 
     var isRegister = false                      // 등록 여부
 
-    fun saveDiary(title: String, content: String) {
-        viewModelScope.launch {
-            val diary = Diary(
-                title = title,
-                content = content,
-                baseDate = baseDate,
-                createdAt = Calendar.getInstance()
-            )
+    suspend fun saveDiary(title: String, content: String): Diary {
+        val diary = Diary(
+            title = title,
+            content = content,
+            baseDate = baseDate,
+            createdAt = Calendar.getInstance()
+        )
 
-            diaryEditUseCase(diary)
-        }
+        diaryEditUseCase(diary)
+
+        return diary
     }
 }
