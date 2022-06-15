@@ -1,9 +1,6 @@
 package app.sosocom.smallstep.data.data_source
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import app.sosocom.smallstep.data.entity.DiaryEntity
 
 @Dao
@@ -15,4 +12,6 @@ interface DiaryDao {
     @Query("SELECT * from diary where :startTime <= baseDate and baseDate <= :endTime")
     suspend fun getAllDiary(startTime: Long, endTime: Long): List<DiaryEntity>
 
+    @Delete
+    suspend fun deleteDiary(diary: DiaryEntity)
 }
