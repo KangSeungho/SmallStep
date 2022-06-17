@@ -53,7 +53,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_diary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
