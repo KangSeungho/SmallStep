@@ -27,7 +27,8 @@
             android:exported="false" />
         <activity
             android:name="app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <!--endregion 감정일기 화면 -->
     </application>
 </manifest>
