@@ -13,14 +13,14 @@ import javax.inject.Inject
 class DiaryEditViewModel @Inject constructor(
     private val diaryEditUseCase: DiaryInsertUseCase
 ) : ViewModel() {
+    var id: Int? = null                         // ID (null -> 등록, id가 있으면 수정)
     val title = MutableLiveData<String>()       // 제목
     val content = MutableLiveData<String>()     // 내용
     lateinit var baseDate: LocalDate            // 기준 날짜
 
-    var isRegister = false                      // 등록 여부
-
     suspend fun saveDiary(title: String, content: String): Diary {
         val diary = Diary(
+            id = id,
             title = title,
             content = content,
             baseDate = baseDate,

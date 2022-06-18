@@ -43,13 +43,11 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
 
         when(diary) {
             // 등록
-            null -> {
-                viewModel.isRegister = true
-            }
+            null -> {}
 
             // 수정
             else -> {
-                viewModel.isRegister = false
+                viewModel.id = diary.id
                 viewModel.title.value = diary.title
                 viewModel.content.value = diary.content
             }
