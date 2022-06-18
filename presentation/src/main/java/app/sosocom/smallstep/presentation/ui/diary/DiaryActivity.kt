@@ -1,6 +1,7 @@
 package app.sosocom.smallstep.presentation.ui.diary
 
 import android.os.Bundle
+import android.widget.PopupMenu
 import androidx.activity.viewModels
 import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.util.Log
@@ -27,9 +28,37 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
 
     private fun initActionBar() {
         binding.actionBar.run {
+            // 뒤로가기
             btnBack.setOnClickListener { onBackPressed() }
 
+            // 제목
             title.text = getString(R.string.diary_title)
+
+            // 더보기
+            btnEnd.setImageResource(R.drawable.ic_more_vertical)
+            btnEnd.setOnClickListener {
+                PopupMenu(activityContext, it).apply {
+                    menuInflater.inflate(R.menu.menu_modify, menu)
+
+                    setOnMenuItemClickListener { item ->
+                        when(item.itemId) {
+                            // 수정하기
+                            R.id.action_modify -> {
+
+                            }
+
+                            // 삭제하기
+                            R.id.action_delete -> {
+
+                            }
+                        }
+
+                        return@setOnMenuItemClickListener false
+                    }
+
+                    show()
+                }
+            }
         }
     }
 
