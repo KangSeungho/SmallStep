@@ -21,7 +21,16 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
         binding.lifecycleOwner = this
         binding.vm = viewModel
 
+        initActionBar()
         loadData()
+    }
+
+    private fun initActionBar() {
+        binding.actionBar.run {
+            btnBack.setOnClickListener { onBackPressed() }
+
+            title.text = getString(R.string.diary_title)
+        }
     }
 
     private fun loadData() {
