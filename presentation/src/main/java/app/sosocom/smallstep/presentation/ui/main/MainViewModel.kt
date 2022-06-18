@@ -26,22 +26,6 @@ class MainViewModel @Inject constructor(
         _monthWrites.postValue(dayWriteQueryUseCase.invoke(year, month))
     }
 
-    fun addDiary(diary: Diary) {
-        val day = diary.baseDate.dayOfMonth
-        val dayWrites = monthWrites.value?.get(day) ?: DayWrites(day, null, null, null, null)
-        dayWrites.diary = diary
-
-        val mutableMap = monthWrites.value?.toMutableMap() ?: mutableMapOf()
-        mutableMap[day] = dayWrites
-
-        _monthWrites.value = mutableMap
-
-        // 만약 선택된 날짜를 갱신하면 데이터 갱신
-        if(selDayWrites.value?.day == day) {
-            setSelectedDate(diary.baseDate)
-        }
-    }
-
     fun setSelectedDate(date: LocalDate) {
         val dayWrites = monthWrites.value?.get(date.dayOfMonth)
         _selDayWrites.postValue(dayWrites)

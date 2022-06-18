@@ -32,32 +32,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val customDayBinder = CustomDayBinder()
 
-    private val resultDiary = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        when(it.resultCode) {
-            RESULT_OK -> {
-                val diary = it.data?.getParcelableExtra<Diary>(ExtraConstants.EXTRA_DIARY) ?: return@registerForActivityResult
-
-                viewModel.addDiary(diary)
-            }
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding.lifecycleOwner = this
         binding.vm = viewModel
 
-        loadData()
         initUI()
         initObserver()
     }
 
-    private fun loadData() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val now = LocalDate.now()
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
 
-            viewModel.getMonthWrites(now.year, now.monthValue)
+    private fun loadData() {
+        binding.calendarView.findFirstVisibleMonth()?.let { month ->
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.getMonthWrites(month.year, month.month)
+            }
         }
     }
 
@@ -162,7 +156,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             val intent = Intent(this, DiaryEditActivity::class.java)
             intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
             intent.putExtra(ExtraConstants.EXTRA_DATE, customDayBinder.selectedDate)
-            resultDiary.launch(intent)
+            startActivity(intent)
             pushActivity()
         }
     }
