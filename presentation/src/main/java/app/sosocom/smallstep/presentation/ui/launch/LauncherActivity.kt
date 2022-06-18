@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 class LauncherActivity : BaseActivity<ActivityLauncherBinding>(R.layout.activity_launcher) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
 
         Glide.with(this)
             .asGif()
