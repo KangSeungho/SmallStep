@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.widget.PopupMenu
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.util.Log
 import app.sosocom.smallstep.domain.util.LogTag
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.BaseActivity
+import app.sosocom.smallstep.presentation.base.CustomAlertDialog
 import app.sosocom.smallstep.presentation.databinding.ActivityDiaryBinding
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary) {
@@ -66,7 +69,18 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
 
                             // 삭제하기
                             R.id.action_delete -> {
+                                CustomAlertDialog(activityContext)
+                                    .setMessage(R.string.delete_ask)
+                                    .setOnClickListener {
+                                        lifecycleScope.launch {
+                                            val diary = viewModel.diary.value ?: return@launch
+                                            viewModel.deleteDiary(diary)
 
+                                            finish()
+                                        }
+                                    }
+                                    .isCancel(true)
+                                    .show()
                             }
                         }
 

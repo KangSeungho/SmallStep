@@ -13,6 +13,7 @@
     <string name="content_info">내용을 입력해주세요.</string>
 
     <string name="save_ask">저장하시겠습니까?</string>
+    <string name="delete_ask">정말 삭제하시겠습니까?\n삭제한 정보는 복구시킬 수 없습니다.</string>
 
     <string name="todo_title">To-Do</string>
     <string name="todo_info">오늘 스케줄의 빈틈을 이용해 하는 일을 정의해보아요.</string>
