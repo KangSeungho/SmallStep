@@ -6,7 +6,7 @@ import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.usecase.DiaryInsertUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
-import java.util.*
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,7 +24,7 @@ class DiaryEditViewModel @Inject constructor(
             title = title,
             content = content,
             baseDate = baseDate,
-            createdAt = Calendar.getInstance()
+            createdAt = LocalDateTime.now()
         )
 
         diaryEditUseCase(diary)

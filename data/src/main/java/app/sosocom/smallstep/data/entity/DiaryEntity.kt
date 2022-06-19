@@ -9,5 +9,5 @@ data class DiaryEntity(
     val title: String,                  // 제목
     val content: String,                // 내용
     val baseDate: Long,                 // 기준 날짜
-    val createdAt: Long                 // 생성 시각
+    val createdAt: Long                 // 생성 시각 (저장 시간은 UTC-0, 실제 표시할 때는 사용자의 시간)
 )
