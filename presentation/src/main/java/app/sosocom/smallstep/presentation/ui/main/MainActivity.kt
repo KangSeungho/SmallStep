@@ -173,10 +173,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 binding.calendarView.notifyMonthChanged(month.yearMonth)
             }
 
-            // 오늘 날짜로 초기 데이터 세티
-            if(viewModel.selDayWrites.value == null) {
-                viewModel.setSelectedDate(LocalDate.now())
-                customDayBinder.selectedDate = LocalDate.now()
+            // 선택된 날의 데이터 세팅
+            when(val selectedDate = customDayBinder.selectedDate) {
+                // 지정된 날짜가 없으면 오늘 날짜의 데이터로 설정
+                null -> {
+                    viewModel.setSelectedDate(LocalDate.now())
+                    customDayBinder.selectedDate = LocalDate.now()
+                }
+
+                // 오늘 날짜 데이터를 변경된 데이터로 갱신
+                else -> {
+                    viewModel.setSelectedDate(selectedDate)
+                }
             }
         }
     }
