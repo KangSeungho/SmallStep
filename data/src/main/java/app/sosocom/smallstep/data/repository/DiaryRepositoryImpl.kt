@@ -9,6 +9,6 @@ class DiaryRepositoryImpl(
     private val dao: DiaryDao
 ) : DiaryRepository {
     override suspend fun insertDiary(diary: Diary) = dao.insertDiary(Mapper.convertDiaryToEntity(diary))
-    override suspend fun getAllDiary(dateTimeRange: LongRange) = dao.getAllDiary(dateTimeRange.first, dateTimeRange.last).map { Mapper.convertDiaryEntityToEntity(it) }
+    override suspend fun getAllDiary(dateTimeRange: LongRange) = dao.getAllDiary(dateTimeRange.first, dateTimeRange.last).map { Mapper.convertDiaryEntityToModel(it) }
     override suspend fun deleteDiary(diary: Diary) = dao.deleteDiary(Mapper.convertDiaryToEntity(diary))
 }
