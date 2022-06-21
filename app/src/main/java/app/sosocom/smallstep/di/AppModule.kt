@@ -4,7 +4,9 @@ import app.sosocom.smallstep.data.repository.DiaryRepositoryImpl
 import android.content.Context
 import androidx.room.Room
 import app.sosocom.smallstep.data.data_source.Database
+import app.sosocom.smallstep.data.repository.TodoRepositoryImpl
 import app.sosocom.smallstep.domain.repository.DiaryRepository
+import app.sosocom.smallstep.domain.repository.TodoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,4 +34,9 @@ object AppModule {
         return DiaryRepositoryImpl(db.diaryDao)
     }
 
+    @Provides
+    @Singleton
+    fun provideTodoRepository(db: Database): TodoRepository {
+        return TodoRepositoryImpl(db.todoDao)
+    }
 }
