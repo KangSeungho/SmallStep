@@ -6,9 +6,9 @@
     tools:context=".presentation.ui.emotion_diary.DiaryActivity">
 
     <data>
-        <variable
-            name="vm"
-            type="app.sosocom.smallstep.presentation.ui.todo.TodoViewModel" />
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="app.sosocom.smallstep.presentation.ui.todo.TodoViewModel" />-->
     </data>
 
     <LinearLayout
