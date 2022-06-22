@@ -1,34 +1,34 @@
 package app.sosocom.smallstep.domain.usecase
 
-import app.sosocom.smallstep.domain.model.DayWrites
+import app.sosocom.smallstep.domain.model.DailyWriteBundle
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
 
-class DayWriteQueryUseCase @Inject constructor(
+class DailyWriteQueryUseCase @Inject constructor(
     private val diaryUseCase: DiaryQueryUseCase,
     private val todoUseCase: TodoQueryUseCase
 ) {
-    suspend operator fun invoke(year: Int, month: Int): Map<Int, DayWrites> {
+    suspend operator fun invoke(year: Int, month: Int): Map<Int, DailyWriteBundle> {
         val dateTimeRange = getDateTimeRange(year, month)
 
-        val response = HashMap<Int, DayWrites>()
+        val response = HashMap<Int, DailyWriteBundle>()
 
         for(diary in diaryUseCase(dateTimeRange)) {
             val day = diary.baseDate.dayOfMonth
-            val dayWrites = response.getOrDefault(day, DayWrites(day))
+            val dailyWriteBundle = response.getOrDefault(day, DailyWriteBundle(day))
 
-            dayWrites.diary = diary
-            response[dayWrites.day] = dayWrites
+            dailyWriteBundle.diary = diary
+            response[dailyWriteBundle.day] = dailyWriteBundle
         }
 
         for(todoList in todoUseCase(dateTimeRange).groupBy { it.baseDate }) {
             val day = todoList.key.dayOfMonth
-            val dayWrites = response.getOrDefault(day, DayWrites(day))
+            val dailyWriteBundle = response.getOrDefault(day, DailyWriteBundle(day))
 
-            dayWrites.dailyTodoBundle = DailyTodoBundle(todoList.value, todoList.key)
-            response[dayWrites.day] = dayWrites
+            dailyWriteBundle.dailyTodoBundle = DailyTodoBundle(todoList.value, todoList.key)
+            response[dailyWriteBundle.day] = dailyWriteBundle
         }
 
         return response

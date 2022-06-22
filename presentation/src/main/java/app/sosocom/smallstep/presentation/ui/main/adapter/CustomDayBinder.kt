@@ -2,7 +2,7 @@ package app.sosocom.smallstep.presentation.ui.main.adapter
 
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import app.sosocom.smallstep.domain.model.DayWrites
+import app.sosocom.smallstep.domain.model.DailyWriteBundle
 import app.sosocom.smallstep.presentation.databinding.ItemCalendarDayBinding
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner
@@ -11,8 +11,8 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 import java.time.LocalDate
 
 class CustomDayBinder : DayBinder<CustomDayBinder.DayViewContainer> {
-    private var dataMap = emptyMap<Int, DayWrites>()
-    fun setDataMap(data: Map<Int, DayWrites>) {
+    private var dataMap = emptyMap<Int, DailyWriteBundle>()
+    fun setDataMap(data: Map<Int, DailyWriteBundle>) {
         dataMap = data
     }
 

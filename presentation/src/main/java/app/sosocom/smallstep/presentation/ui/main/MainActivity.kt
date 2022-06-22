@@ -110,7 +110,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         // 할일 목록 클릭
         binding.cardTodo.setOnClickListener {
-            val todoList = viewModel.selDayWrites.value?.dailyTodoBundle ?: return@setOnClickListener
+            val todoList = viewModel.selDailyWriteBundle.value?.dailyTodoBundle ?: return@setOnClickListener
 
             val intent = Intent(this, TodoListActivity::class.java)
             intent.putExtra(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE, todoList)
@@ -119,7 +119,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         // 일기 항목 클릭
         binding.cardEmotionDiary.setOnClickListener {
-            val diary = viewModel.selDayWrites.value?.diary ?: return@setOnClickListener
+            val diary = viewModel.selDailyWriteBundle.value?.diary ?: return@setOnClickListener
 
             val intent = Intent(this, DiaryActivity::class.java)
             intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
@@ -159,7 +159,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 return@setOnClickListener
             }
 
-            val diary = viewModel.selDayWrites.value?.diary
+            val diary = viewModel.selDailyWriteBundle.value?.diary
 
             val intent = Intent(this, DiaryEditActivity::class.java)
             intent.putExtra(ExtraConstants.EXTRA_DIARY, diary)
