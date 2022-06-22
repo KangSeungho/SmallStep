@@ -5,5 +5,7 @@ package app.sosocom.smallstep.presentation.util
  */
 object ExtraConstants {
     const val EXTRA_DATE = "EXTRA_DATE"
+
     const val EXTRA_DIARY = "EXTRA_DIARY"
+    const val EXTRA_DAILY_TODO_BUNDLE = "EXTRA_DAILY_TODO_BUNDLE"
 }

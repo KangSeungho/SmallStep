@@ -5,7 +5,7 @@ package app.sosocom.smallstep.domain.model
  */
 data class DayWrites(
     val day: Int,
-    var todoList: TodoList? = null,
+    var dailyTodoBundle: DailyTodoBundle? = null,
     var happyPointList: HappyPointList? = null,
     var goodAndNew: GoodAndNew? = null,
     var diary: Diary? = null

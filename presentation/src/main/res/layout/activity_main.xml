@@ -120,7 +120,7 @@
             android:shadowColor="@color/gray_eb"
             android:shadowDx="0"
             android:shadowDy="2"
-            android:visibleIf="@{vm.selDayWrites.todoList != null}"
+            android:visibleIf="@{vm.selDayWrites.dailyTodoBundle != null}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"

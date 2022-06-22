@@ -58,7 +58,7 @@
             <ImageView
                 style="@style/dayEventIconStyle"
                 android:src="@drawable/icon_calendar_todo"
-                android:visibleIf="@{item.todoList != null}"
+                android:visibleIf="@{item.dailyTodoBundle != null}"
                 android:visibility="gone"
                 tools:visibility="visible" />
 

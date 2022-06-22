@@ -1,7 +1,7 @@
 package app.sosocom.smallstep.domain.usecase
 
 import app.sosocom.smallstep.domain.model.DayWrites
-import app.sosocom.smallstep.domain.model.TodoList
+import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
@@ -27,7 +27,7 @@ class DayWriteQueryUseCase @Inject constructor(
             val day = todoList.key.dayOfMonth
             val dayWrites = response.getOrDefault(day, DayWrites(day))
 
-            dayWrites.todoList = TodoList(todoList.value, todoList.key)
+            dayWrites.dailyTodoBundle = DailyTodoBundle(todoList.value, todoList.key)
             response[dayWrites.day] = dayWrites
         }
 

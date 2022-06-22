@@ -21,14 +21,26 @@
             android:exported="false"
             android:launchMode="singleTask" />
 
-        <!--region 감정일기 화면 -->
+        <!-- region 감정일기 화면 -->
+
         <activity
             android:name="app.sosocom.smallstep.presentation.ui.diary.DiaryActivity"
             android:exported="false" />
+
         <activity
             android:name="app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <!--endregion 감정일기 화면 -->
+
+        <!-- endregion 감정일기 화면 -->
+
+
+        <!-- region 할일 화면 -->
+
+        <activity
+            android:name="app.sosocom.smallstep.presentation.ui.todo.TodoListActivity"
+            android:exported="false" />
+
+        <!-- endregion 할일 화면 -->
     </application>
 </manifest>

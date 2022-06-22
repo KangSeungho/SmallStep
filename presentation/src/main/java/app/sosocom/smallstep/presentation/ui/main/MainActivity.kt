@@ -4,9 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.CustomAlertDialog
@@ -15,6 +13,7 @@ import app.sosocom.smallstep.presentation.ui.diary.DiaryActivity
 import app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity
 import app.sosocom.smallstep.presentation.ui.main.adapter.CustomDayBinder
 import app.sosocom.smallstep.presentation.ui.main.adapter.CustomMonthHeaderBinder
+import app.sosocom.smallstep.presentation.ui.todo.TodoListActivity
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import app.sosocom.smallstep.presentation.util.daysOfWeekFromLocale
 import com.kizitonwose.calendarview.utils.next
@@ -107,6 +106,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
                 viewModel.setSelectedDate(afterDate)
             }
+        }
+
+        // 할일 목록 클릭
+        binding.cardTodo.setOnClickListener {
+            val todoList = viewModel.selDayWrites.value?.dailyTodoBundle ?: return@setOnClickListener
+
+            val intent = Intent(this, TodoListActivity::class.java)
+            intent.putExtra(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE, todoList)
+            startActivity(intent)
         }
 
         // 일기 항목 클릭
