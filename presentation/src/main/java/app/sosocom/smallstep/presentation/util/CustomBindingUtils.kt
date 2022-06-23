@@ -13,6 +13,11 @@ fun View.setVisibleIf(visible: Boolean?) {
     isVisible = visible ?: false
 }
 
+@BindingAdapter("android:selected")
+fun View.setBindingSelected(isSelected: Boolean?) {
+    this.isSelected = isSelected ?: false
+}
+
 @BindingAdapter("setFormatterDateText")
 fun setFormatterDateText(view: TextView, localDate: LocalDate?) {
     localDate ?: return
