@@ -16,7 +16,11 @@
     <color name="gray_9b">#FF9B9B9B</color>
     <color name="gray_eb">#FFEBEBEB</color>
 
-    <color name="pastel_purple">#FFD291BC</color>
+    <color name="main_color">#FFD291BC</color>
+
+    <!-- actionbar, statusbar 색상 -->
+    <color name="actionbar_color">@color/main_color</color>
+
     <color name="pastel_orange">#FFFFC8A2</color>
 
     <color name="red">#FFFF0000</color>

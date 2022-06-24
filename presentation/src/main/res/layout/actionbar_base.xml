@@ -7,7 +7,7 @@
         android:layout_height="56dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/pastel_purple">
+        android:background="@color/actionbar_color">
 
         <ImageView
             android:id="@+id/btn_back"
