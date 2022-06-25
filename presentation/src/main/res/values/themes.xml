@@ -20,10 +20,12 @@
         <item name="materialButtonStyle">@style/CustomButtonStyle</item>
     </style>
 
+    <!-- 툴바 기본 설정 -->
     <style name="customToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
         <item name="contentInsetStart">0dp</item>
     </style>
 
+    <!-- 버튼 기본 스타일 -->
     <style name="CustomButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -34,6 +36,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!-- 요일 표기 텍스트 스타일 -->
     <style name="monthHeaderTextStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -43,6 +46,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <!-- 일자 이벤트 아이콘 스타일 -->
     <style name="dayEventIconStyle">
         <item name="android:layout_width">6dp</item>
         <item name="android:layout_height">6dp</item>
