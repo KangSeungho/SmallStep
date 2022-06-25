@@ -15,10 +15,12 @@
         android:background="@drawable/background_top_corner">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:endIconMode="clear_text"
             app:hintEnabled="false"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_send"
             app:boxBackgroundMode="none"
             app:boxBackgroundColor="@android:color/transparent">
 
@@ -27,15 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="0dp"
-                android:hint="@string/todo_edit_hint" />
+                android:hint="@string/todo_edit_hint"
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_send"
-            android:layout_gravity="end"/>
     </LinearLayout>
 </layout>

@@ -14,7 +14,7 @@ class TodoEditDialog(context: Context) : BaseBottomSheetDialog<DialogTodoEditBin
     }
 
     fun setOnSaveListener(listener: (Todo?, String) -> Unit) {
-        binding.send.setOnClickListener {
+        binding.editLayout.setEndIconOnClickListener {
             listener(todo, (binding.editContent.text ?: "").toString())
 
             dismiss()
