@@ -171,9 +171,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
             // 일기는 미래 날짜를 미리 쓸 수 없음
             if(LocalDate.now() < customDayBinder.selectedDate) {
-                CustomAlertDialog(this)
-                    .setMessage(R.string.diary_cannot_write)
-                    .show()
+                CustomAlertDialog(this).apply {
+                    setMessage(R.string.diary_cannot_write)
+                    show()
+                }
+
                 return@setOnClickListener
             }
 

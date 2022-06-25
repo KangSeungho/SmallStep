@@ -70,26 +70,28 @@ class DiaryEditActivity : BaseActivity<ActivityDiaryEditBinding>(R.layout.activi
                 return@setOnClickListener
             }
 
-            CustomAlertDialog(this)
-                .setMessage(R.string.save_ask)
-                .isCancel(true)
-                .setOnClickListener {
+            CustomAlertDialog(this).apply {
+                setMessage(R.string.save_ask)
+                isCancel(true)
+                setOnClickListener {
                     lifecycleScope.launch {
                         val diary = viewModel.saveDiary(title, content)
 
-                        CustomAlertDialog(activityContext)
-                            .setMessage(R.string.diary_save_success)
-                            .setOnClickListener {
+                        CustomAlertDialog(activityContext).apply {
+                            setMessage(R.string.diary_save_success)
+                            setOnClickListener {
                                 val intent = Intent().apply {
                                     putExtra(ExtraConstants.EXTRA_DIARY, diary)
                                 }
                                 setResult(RESULT_OK, intent)
                                 finish()
                             }
-                            .show()
+                            show()
+                        }
                     }
                 }
-                .show()
+                show()
+            }
         }
     }
 }

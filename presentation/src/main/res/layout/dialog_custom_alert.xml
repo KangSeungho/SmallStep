@@ -53,37 +53,41 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:text="@string/cancel"
                     android:textColor="@color/main_color"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tv_ok"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="@string/cancel" />
+                    tools:visibility="visible"/>
 
                 <View
                     android:id="@+id/divider_cancel"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/gray_ae"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tv_cancel"/>
+                    app:layout_constraintStart_toEndOf="@id/tv_cancel"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/tv_ok"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:text="@string/ok"
                     android:textColor="@color/main_color"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/tv_cancel"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="@string/ok" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

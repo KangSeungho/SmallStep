@@ -69,9 +69,9 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
 
                             // 삭제하기
                             R.id.action_delete -> {
-                                CustomAlertDialog(activityContext)
-                                    .setMessage(R.string.delete_ask)
-                                    .setOnClickListener {
+                                CustomAlertDialog(activityContext).apply {
+                                    setMessage(R.string.delete_ask)
+                                    setOnClickListener {
                                         lifecycleScope.launch {
                                             val diary = viewModel.diary.value ?: return@launch
                                             viewModel.deleteDiary(diary)
@@ -79,8 +79,9 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
                                             finish()
                                         }
                                     }
-                                    .isCancel(true)
-                                    .show()
+                                    isCancel(true)
+                                    show()
+                                }
                             }
                         }
 
