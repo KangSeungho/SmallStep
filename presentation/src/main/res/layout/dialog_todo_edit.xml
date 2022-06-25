@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hintEnabled="false"
-            app:endIconMode="custom"
+            app:endIconMode="clear_text"
             app:endIconDrawable="@drawable/ic_send"
             app:boxBackgroundMode="none"
             app:boxBackgroundColor="@android:color/transparent">
