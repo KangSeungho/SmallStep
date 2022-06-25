@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.sosocom.smallstep.presentation">
 
-    <application>
+    <application
+        android:theme="@style/Theme.SmallStep">
+
         <!-- 시작 화면 -->
         <activity
             android:name="app.sosocom.smallstep.presentation.ui.launch.LauncherActivity"
