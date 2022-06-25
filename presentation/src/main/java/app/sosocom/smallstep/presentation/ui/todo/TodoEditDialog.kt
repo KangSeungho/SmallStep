@@ -11,6 +11,7 @@ class TodoEditDialog(context: Context) : BaseBottomSheetDialog<DialogTodoEditBin
     set(value) {
         field = value
         binding.editContent.setText(value?.content)
+        binding.editContent.setSelection(value?.content?.length ?: 0)
     }
 
     fun setOnSaveListener(listener: (Todo?, String) -> Unit) {
