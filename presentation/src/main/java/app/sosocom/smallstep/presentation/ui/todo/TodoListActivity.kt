@@ -33,7 +33,7 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
     private fun loadData() {
         // 데이터 리스트
         val dailyTodoBundle = intent.getParcelableExtra<DailyTodoBundle>(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE)
-        if(dailyTodoBundle == null || dailyTodoBundle.todoList.isEmpty()) {
+        if(dailyTodoBundle == null) {
             finish()
             return
         }

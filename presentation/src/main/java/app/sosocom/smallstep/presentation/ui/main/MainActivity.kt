@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.CustomAlertDialog
@@ -110,10 +111,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         // 할일 목록 클릭
         binding.cardTodo.setOnClickListener {
-            val todoList = viewModel.selDailyWriteBundle.value?.dailyTodoBundle ?: return@setOnClickListener
+            val todoBundle = viewModel.selDailyWriteBundle.value?.dailyTodoBundle ?: return@setOnClickListener
 
             val intent = Intent(this, TodoListActivity::class.java)
-            intent.putExtra(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE, todoList)
+            intent.putExtra(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE, todoBundle)
             startActivity(intent)
         }
 
@@ -146,6 +147,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 45f, 0f).apply { start() }
                 }
             }
+        }
+
+        // 할일 추가 버튼
+        binding.btnAddTodo.setOnClickListener {
+            // 추가 플로팅 버튼 닫기 처리
+            binding.floatingActionButton.performClick()
+
+            val selectedDate = customDayBinder.selectedDate ?: LocalDate.now()
+
+            val todoBundle = viewModel.selDailyWriteBundle.value?.dailyTodoBundle ?: DailyTodoBundle(ArrayList(), selectedDate)
+
+            val intent = Intent(this, TodoListActivity::class.java)
+            intent.putExtra(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE, todoBundle)
+            startActivity(intent)
+            pushActivity()
         }
 
         // 일기 추가 버튼
