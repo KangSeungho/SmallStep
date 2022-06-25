@@ -265,6 +265,17 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/main_color"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_add_diary"
+            app:layout_constraintEnd_toEndOf="@+id/btn_add_diary"
+            app:srcCompat="@drawable/ic_add_todo_list"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_add_diary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -272,7 +283,7 @@
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
             app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
-            app:srcCompat="@drawable/ic_diary"
+            app:srcCompat="@drawable/ic_add_diary"
             app:tint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

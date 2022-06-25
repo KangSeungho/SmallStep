@@ -134,12 +134,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             when(isSelected) {
                 // 추가 버튼 선택
                 true -> {
+                    ObjectAnimator.ofFloat(binding.btnAddTodo, "translationY", -360f).apply { start() }
                     ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", -180f).apply { start() }
                     ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 0f, 45f).apply { start() }
                 }
 
                 // 추가 버튼 해제
                 false -> {
+                    ObjectAnimator.ofFloat(binding.btnAddTodo, "translationY", 0f).apply { start() }
                     ObjectAnimator.ofFloat(binding.btnAddDiary, "translationY", 0f).apply { start() }
                     ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 45f, 0f).apply { start() }
                 }
