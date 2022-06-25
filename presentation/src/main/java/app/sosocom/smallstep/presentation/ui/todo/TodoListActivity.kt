@@ -18,6 +18,8 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
 
     private val adapter = TodoAdapter()
 
+    private val editDialog by lazy { TodoEditDialog(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,7 +59,8 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
 
         // 아이템 클릭
         adapter.setOnItemClickListener { todo ->
-            // TODO : 수정할 수 있는 다이얼로그 표시 필요
+            editDialog.todo = todo
+            editDialog.show()
         }
 
         // 아이템 체크
@@ -65,6 +68,32 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
             lifecycleScope.launch {
                 todo.isComplete = isChecked
                 viewModel.insertTodo(todo)
+            }
+        }
+
+        editDialog.setOnSaveListener { todo, content ->
+            when(todo) {
+                // 추가
+                null -> {
+//                    val createTodo = Todo(
+//                        content = content,
+//                        isComplete = false,
+//                        baseDate = LocalDate.now(),
+//                        createdAt = LocalDateTime.now()
+//                    )
+//
+//                    lifecycleScope.launch { viewModel.insertTodo(createTodo) }
+//                    adapter.submitList(adapter.currentList.toMutableList().apply { add(createTodo) })
+                }
+
+                // 변경
+                else -> {
+                    val position = adapter.currentList.indexOf(todo)
+                    todo.content = content
+
+                    lifecycleScope.launch { viewModel.insertTodo(todo) }
+                    adapter.notifyItemChanged(position)
+                }
             }
         }
     }

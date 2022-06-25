@@ -16,6 +16,9 @@
         <!-- 툴바 기본 설정 -->
         <item name="toolbarStyle">@style/customToolbarStyle</item>
 
+        <!-- BottomSheet 기본 스타일 -->
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+
         <!-- 버튼 기본 스타일 -->
         <item name="materialButtonStyle">@style/CustomButtonStyle</item>
     </style>
@@ -34,6 +37,16 @@
 
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- BottomSheet 기본 스타일 -->
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
 
     <!-- 요일 표기 텍스트 스타일 -->
