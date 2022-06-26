@@ -1,7 +1,9 @@
 package app.sosocom.smallstep.presentation.ui.todo
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import app.sosocom.smallstep.domain.model.Todo
@@ -78,6 +80,15 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
                 viewModel.insertTodo(todo)
             }
         }
+
+        // 아이템 추가 버튼
+        binding.btnAddTodo.setOnClickListener {
+            editDialog.show()
+        }
+
+        // 작성 화면 상태에 따라 표시
+        editDialog.setOnShowListener { binding.btnAddTodo.visibility = View.GONE }
+        editDialog.setOnDismissListener { binding.btnAddTodo.visibility = View.VISIBLE }
 
         editDialog.setOnSaveListener { todo, content ->
             when(todo) {
