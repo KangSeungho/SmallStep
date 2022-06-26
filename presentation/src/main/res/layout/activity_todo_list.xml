@@ -49,11 +49,23 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_todo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_todo"
                 tools:itemCount="5"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_add_todo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/pastel_orange"
+                app:borderWidth="0dp"
+                app:srcCompat="@drawable/ic_add_white"
+                app:tint="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </layout>

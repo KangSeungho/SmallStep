@@ -1,9 +1,12 @@
 package app.sosocom.smallstep.presentation.ui.todo
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
+import app.sosocom.smallstep.domain.model.Todo
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.databinding.ActivityTodoListBinding
@@ -11,6 +14,8 @@ import app.sosocom.smallstep.presentation.ui.todo.adapter.TodoAdapter
 import app.sosocom.smallstep.presentation.util.ExtraConstants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity_todo_list) {
@@ -38,6 +43,11 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
         if(dailyTodoBundle == null) {
             finish()
             return
+        }
+
+        // 할일 목록이 없다면 자동으로 작성 화면 표시
+        if(dailyTodoBundle.todoList.isEmpty()) {
+            editDialog.show()
         }
 
         viewModel.setDailyTodoBundle(dailyTodoBundle)
@@ -71,19 +81,28 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
             }
         }
 
+        // 아이템 추가 버튼
+        binding.btnAddTodo.setOnClickListener {
+            editDialog.show()
+        }
+
+        // 작성 화면 상태에 따라 표시
+        editDialog.setOnShowListener { binding.btnAddTodo.visibility = View.GONE }
+        editDialog.setOnDismissListener { binding.btnAddTodo.visibility = View.VISIBLE }
+
         editDialog.setOnSaveListener { todo, content ->
             when(todo) {
                 // 추가
                 null -> {
-//                    val createTodo = Todo(
-//                        content = content,
-//                        isComplete = false,
-//                        baseDate = LocalDate.now(),
-//                        createdAt = LocalDateTime.now()
-//                    )
-//
-//                    lifecycleScope.launch { viewModel.insertTodo(createTodo) }
-//                    adapter.submitList(adapter.currentList.toMutableList().apply { add(createTodo) })
+                    val createTodo = Todo(
+                        content = content,
+                        isComplete = false,
+                        baseDate = LocalDate.now(),
+                        createdAt = LocalDateTime.now()
+                    )
+
+                    lifecycleScope.launch { viewModel.insertTodo(createTodo) }
+                    adapter.submitList(adapter.currentList.toMutableList().apply { add(createTodo) })
                 }
 
                 // 변경
