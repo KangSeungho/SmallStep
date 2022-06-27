@@ -35,9 +35,13 @@ class DailyWriteQueryUseCase @Inject constructor(
     }
 
     private fun getDateTimeRange(year: Int, month: Int): LongRange {
+        val startTime: Long
+        val endTime: Long
 
-        val startTime = LocalDate.of(year, month, 1).toEpochDay()
-        val endTime = LocalDate.of(year, month+1, 1).toEpochDay()
+        LocalDate.of(year, month, 1).run {
+            startTime = toEpochDay()
+            endTime = plusMonths(1).minusDays(1).toEpochDay()
+        }
 
         return startTime..endTime
     }
