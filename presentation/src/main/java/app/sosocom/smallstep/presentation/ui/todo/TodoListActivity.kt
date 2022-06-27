@@ -12,6 +12,7 @@ import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.databinding.ActivityTodoListBinding
 import app.sosocom.smallstep.presentation.ui.todo.adapter.TodoAdapter
 import app.sosocom.smallstep.presentation.util.ExtraConstants
+import app.sosocom.smallstep.presentation.util.addItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -102,7 +103,7 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
                     )
 
                     lifecycleScope.launch { viewModel.insertTodo(createTodo) }
-                    adapter.submitList(adapter.currentList.toMutableList().apply { add(createTodo) })
+                    adapter.addItem(createTodo)
                 }
 
                 // 변경

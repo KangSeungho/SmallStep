@@ -1,5 +1,7 @@
 package app.sosocom.smallstep.presentation.util
 
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import java.time.DayOfWeek
 import java.time.temporal.WeekFields
 import java.util.*
@@ -15,4 +17,10 @@ fun daysOfWeekFromLocale(): Array<DayOfWeek> {
         daysOfWeek = rhs + lhs
     }
     return daysOfWeek
+}
+
+fun <T, VH : RecyclerView.ViewHolder> ListAdapter<T, VH>.addItem(item: T) {
+    submitList(currentList.toMutableList().apply {
+        add(item)
+    })
 }
