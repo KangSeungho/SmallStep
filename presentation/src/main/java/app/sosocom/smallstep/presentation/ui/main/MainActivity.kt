@@ -82,6 +82,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 val title = "${month.year}년 ${month.month}월"
                 binding.textCurrentMonth.text = title
 
+                // 이미 선택된 날짜가 있고 달이 바뀌면 선택된 날짜를 1일로 자동 변경
+                if(customDayBinder.selectedDate != null) {
+                    customDayBinder.selectedDate = LocalDate.of(month.year, month.month, 1)
+                }
+
                 // 데이터 초기화
                 customDayBinder.setDataMap(mutableMapOf())
                 notifyMonthChanged(month.yearMonth)
@@ -192,14 +197,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun initObserver() {
         viewModel.monthWrites.observe(this) { dataMap ->
             dataMap ?: return@observe
+            val calendarMonth = binding.calendarView.findFirstVisibleMonth() ?: return@observe
 
             // 데이터 세팅
             customDayBinder.setDataMap(dataMap)
 
             // 갱신
-            binding.calendarView.findFirstVisibleMonth()?.let { month ->
-                binding.calendarView.notifyMonthChanged(month.yearMonth)
-            }
+            binding.calendarView.notifyMonthChanged(calendarMonth.yearMonth)
 
             // 선택된 날의 데이터 세팅
             when(val selectedDate = customDayBinder.selectedDate) {
