@@ -3,8 +3,9 @@ package app.sosocom.smallstep.presentation.ui.todo
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import app.sosocom.smallstep.domain.model.Todo
 import app.sosocom.smallstep.presentation.R
@@ -82,6 +83,26 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
             }
         }
 
+        // 아이템 제스쳐 이벤트
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true
+            }
+
+            // 리스트 왼쪽으로 스와이프
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val bundle = viewModel.dailyTodoBundle.value ?: return
+
+            }
+        }).attachToRecyclerView(binding.listTodo)
+
         // 아이템 추가 버튼
         binding.btnAddTodo.setOnClickListener {
             editDialog.show()
@@ -91,6 +112,7 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
         editDialog.setOnShowListener { binding.btnAddTodo.visibility = View.GONE }
         editDialog.setOnDismissListener { binding.btnAddTodo.visibility = View.VISIBLE }
 
+        // 할일 작성 완료
         editDialog.setOnSaveListener { todo, content ->
             when(todo) {
                 // 추가
