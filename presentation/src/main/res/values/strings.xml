@@ -17,7 +17,7 @@
 
     <string name="todo_title">To-Do</string>
     <string name="todo_info">오늘 스케줄의 빈틈을 이용해 하는 일을 정의해보아요.</string>
-    <string name="todo_edit_hint">오늘 할 일을 입력해주세요.</string>
+    <string name="todo_edit_hint">할 일을 입력해주세요.</string>
 
     <string name="happy_point_title">오늘의 행복지수</string>
     <string name="happy_point_info">오늘 내가 한 행동 하나하나를 행복지수로 표시해보아요.</string>
