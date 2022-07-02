@@ -10,4 +10,5 @@ class TodoRepositoryImpl(
 ) : TodoRepository {
     override suspend fun insertTodo(todo: Todo) = dao.insertTodo(Mapper.convertTodoToEntity(todo))
     override suspend fun getAllTodo(dateTimeRange: LongRange): List<Todo> = dao.getAllTodo(dateTimeRange.first, dateTimeRange.last).map { Mapper.convertTodoEntityToModel(it) }
+    override suspend fun deleteTodo(todo: Todo) = dao.deleteTodo(Mapper.convertTodoToEntity(todo))
 }

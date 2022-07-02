@@ -100,7 +100,10 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val bundle = viewModel.dailyTodoBundle.value ?: return
 
-                bundle.todoList.removeAt(direction)
+                val todo = bundle.todoList.removeAt(viewHolder.layoutPosition)
+                adapter.notifyItemRemoved(viewHolder.layoutPosition)
+                adapter.submitList(bundle.todoList)
+                lifecycleScope.launch { viewModel.deleteTodo(todo) }
             }
         }).attachToRecyclerView(binding.listTodo)
 

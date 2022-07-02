@@ -5,13 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import app.sosocom.smallstep.domain.model.Todo
+import app.sosocom.smallstep.domain.usecase.TodoDeleteUseCase
 import app.sosocom.smallstep.domain.usecase.TodoInsertUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class TodoViewModel @Inject constructor(
-    private val insertUseCase: TodoInsertUseCase
+    private val insertUseCase: TodoInsertUseCase,
+    private val deleteUseCase: TodoDeleteUseCase
 ) : ViewModel() {
 
     private val _dailyTodoBundle = MutableLiveData<DailyTodoBundle>()
@@ -23,4 +25,5 @@ class TodoViewModel @Inject constructor(
 
     suspend fun insertTodo(todo: Todo) = insertUseCase(todo)
 
+    suspend fun deleteTodo(todo: Todo) = deleteUseCase(todo)
 }
