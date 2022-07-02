@@ -27,7 +27,7 @@ class DailyWriteQueryUseCase @Inject constructor(
             val day = todoList.key.dayOfMonth
             val dailyWriteBundle = response.getOrDefault(day, DailyWriteBundle(day))
 
-            dailyWriteBundle.dailyTodoBundle = DailyTodoBundle(todoList.value, todoList.key)
+            dailyWriteBundle.dailyTodoBundle = DailyTodoBundle(todoList.value.toMutableList(), todoList.key)
             response[dailyWriteBundle.day] = dailyWriteBundle
         }
 

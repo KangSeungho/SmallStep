@@ -10,7 +10,7 @@ import java.time.LocalDateTime
  */
 @Parcelize
 data class DailyTodoBundle(
-    val todoList: List<Todo>,       // 할 일 목록
+    val todoList: MutableList<Todo>,// 할 일 목록
     val baseDate: LocalDate         // 기준 날짜
 ) : Parcelable
 
