@@ -128,8 +128,18 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
                         createdAt = LocalDateTime.now()
                     )
 
-                    lifecycleScope.launch { viewModel.insertTodo(createTodo) }
-                    adapter.addItem(createTodo)
+                    lifecycleScope.launch {
+                        val id = viewModel.insertTodo(createTodo)
+                        val roomTodo = Todo(
+                            id = id.toInt(),
+                            content = createTodo.content,
+                            isComplete = createTodo.isComplete,
+                            baseDate = createTodo.baseDate,
+                            createdAt = createTodo.createdAt
+                        )
+                        adapter.addItem(roomTodo)
+                        viewModel.dailyTodoBundle.value?.todoList?.add(roomTodo)
+                    }
                 }
 
                 // 변경
