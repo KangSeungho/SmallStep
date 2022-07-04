@@ -124,7 +124,7 @@ class TodoListActivity : BaseActivity<ActivityTodoListBinding>(R.layout.activity
                     val createTodo = Todo(
                         content = content,
                         isComplete = false,
-                        baseDate = LocalDate.now(),
+                        baseDate = viewModel.dailyTodoBundle.value?.baseDate ?: LocalDate.now(),
                         createdAt = LocalDateTime.now()
                     )
 
