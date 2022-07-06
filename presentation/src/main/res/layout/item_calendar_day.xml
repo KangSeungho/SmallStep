@@ -65,7 +65,7 @@
             <ImageView
                 style="@style/dayEventIconStyle"
                 android:src="@drawable/icon_calendar_happy_point"
-                android:visibleIf="@{item.happyPointList != null}"
+                android:visibleIf="@{item.dailyHappyPointBundle != null}"
                 android:visibility="gone"
                 tools:visibility="visible" />
 

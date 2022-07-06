@@ -162,7 +162,7 @@
             android:shadowColor="@color/gray_eb"
             android:shadowDx="0"
             android:shadowDy="2"
-            android:visibleIf="@{vm.selDailyWriteBundle.happyPointList != null}"
+            android:visibleIf="@{vm.selDailyWriteBundle.dailyHappyPointBundle != null}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
