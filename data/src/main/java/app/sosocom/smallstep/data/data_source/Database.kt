@@ -3,10 +3,11 @@ package app.sosocom.smallstep.data.data_source
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import app.sosocom.smallstep.data.entity.DiaryEntity
+import app.sosocom.smallstep.data.entity.HappyPointEntity
 import app.sosocom.smallstep.data.entity.TodoEntity
 
 @Database(
-    entities = [DiaryEntity::class, TodoEntity::class],
+    entities = [DiaryEntity::class, TodoEntity::class, HappyPointEntity::class],
     version = 1
 )
 abstract class Database : RoomDatabase() {
@@ -16,4 +17,5 @@ abstract class Database : RoomDatabase() {
 
     abstract val diaryDao: DiaryDao
     abstract val todoDao: TodoDao
+    abstract val happyPointDao: HappyPointDao
 }
