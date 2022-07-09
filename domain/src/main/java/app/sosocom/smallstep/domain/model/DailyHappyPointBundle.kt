@@ -26,5 +26,5 @@ data class HappyPoint(
     @FloatRange(from = 0.0, to = 5.0)
     val point: Float,                       // 점수 (0.0 ~ 5.0)
     val baseDate: LocalDate,                // 기준 날짜
-    val createAt: LocalDateTime             // 작성 시각
+    val createdAt: LocalDateTime             // 작성 시각
 ) : Parcelable

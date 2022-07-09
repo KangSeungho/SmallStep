@@ -10,5 +10,5 @@ data class HappyPointEntity(
     val comment: String,                    // 설명
     val point: Float,                       // 점수 (0.0 ~ 5.0)
     val baseDate: Long,                     // 기준 날짜
-    val createAt: Long                      // 작성 시각
+    val createdAt: Long                      // 작성 시각
 )

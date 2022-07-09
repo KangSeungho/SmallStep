@@ -1,8 +1,10 @@
 package app.sosocom.smallstep.data
 
 import app.sosocom.smallstep.data.entity.DiaryEntity
+import app.sosocom.smallstep.data.entity.HappyPointEntity
 import app.sosocom.smallstep.data.entity.TodoEntity
 import app.sosocom.smallstep.domain.model.Diary
+import app.sosocom.smallstep.domain.model.HappyPoint
 import app.sosocom.smallstep.domain.model.Todo
 import app.sosocom.smallstep.domain.util.LocalDateTime
 import app.sosocom.smallstep.domain.util.toEpochMilli
@@ -41,6 +43,26 @@ object Mapper {
             id = entity.id,
             content = entity.content,
             isComplete = entity.isComplete,
+            baseDate = LocalDate.ofEpochDay(entity.baseDate),
+            createdAt = LocalDateTime.ofEpochMilli(entity.createdAt)
+        )
+
+    fun convertHappyPointToEntity(happyPoint: HappyPoint) =
+        HappyPointEntity(
+            id = happyPoint.id,
+            content = happyPoint.content,
+            comment = happyPoint.comment,
+            point = happyPoint.point,
+            baseDate = happyPoint.baseDate.toEpochDay(),
+            createdAt = happyPoint.createdAt.toEpochMilli()
+        )
+
+    fun convertHappyPointEntityToModel(entity: HappyPointEntity) =
+        HappyPoint(
+            id = entity.id,
+            content = entity.content,
+            comment = entity.comment,
+            point = entity.point,
             baseDate = LocalDate.ofEpochDay(entity.baseDate),
             createdAt = LocalDateTime.ofEpochMilli(entity.createdAt)
         )
