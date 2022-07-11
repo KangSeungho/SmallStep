@@ -11,8 +11,8 @@ import java.time.LocalDateTime
  */
 @Parcelize
 data class DailyHappyPointBundle(
-    val happyPointList: List<HappyPoint>,   // 행복 점수 리스트
-    val baseDate: LocalDate                 // 기준 날짜
+    val happyPointList: MutableList<HappyPoint>,   // 행복 점수 리스트
+    val baseDate: LocalDate                        // 기준 날짜
 ) : Parcelable
 
 /**
@@ -21,10 +21,10 @@ data class DailyHappyPointBundle(
 @Parcelize
 data class HappyPoint(
     val id: Int? = null,
-    val content: String,                    // 행동
-    val comment: String,                    // 설명
+    val content: String,                            // 행동
+    val comment: String,                            // 설명
     @FloatRange(from = 0.0, to = 5.0)
-    val point: Float,                       // 점수 (0.0 ~ 5.0)
-    val baseDate: LocalDate,                // 기준 날짜
-    val createdAt: LocalDateTime             // 작성 시각
+    val point: Float,                               // 점수 (0.0 ~ 5.0)
+    val baseDate: LocalDate,                        // 기준 날짜
+    val createdAt: LocalDateTime                    // 작성 시각
 ) : Parcelable

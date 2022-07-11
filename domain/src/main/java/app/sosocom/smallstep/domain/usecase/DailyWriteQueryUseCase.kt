@@ -1,5 +1,6 @@
 package app.sosocom.smallstep.domain.usecase
 
+import app.sosocom.smallstep.domain.model.DailyHappyPointBundle
 import app.sosocom.smallstep.domain.model.DailyWriteBundle
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import java.time.LocalDate
@@ -8,7 +9,8 @@ import javax.inject.Inject
 
 class DailyWriteQueryUseCase @Inject constructor(
     private val diaryUseCase: DiaryQueryUseCase,
-    private val todoUseCase: TodoQueryUseCase
+    private val todoUseCase: TodoQueryUseCase,
+    private val happyPointUseCase: HappyPointQueryUseCase
 ) {
     suspend operator fun invoke(year: Int, month: Int): Map<Int, DailyWriteBundle> {
         val dateTimeRange = getDateTimeRange(year, month)
@@ -28,6 +30,14 @@ class DailyWriteQueryUseCase @Inject constructor(
             val dailyWriteBundle = response.getOrDefault(day, DailyWriteBundle(day))
 
             dailyWriteBundle.dailyTodoBundle = DailyTodoBundle(todoList.value.toMutableList(), todoList.key)
+            response[dailyWriteBundle.day] = dailyWriteBundle
+        }
+
+        for(happyPointList in happyPointUseCase(dateTimeRange).groupBy { it.baseDate }) {
+            val day = happyPointList.key.dayOfMonth
+            val dailyWriteBundle = response.getOrDefault(day, DailyWriteBundle(day))
+
+            dailyWriteBundle.dailyHappyPointBundle = DailyHappyPointBundle(happyPointList.value.toMutableList(), happyPointList.key)
             response[dailyWriteBundle.day] = dailyWriteBundle
         }
 
