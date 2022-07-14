@@ -8,4 +8,5 @@ object ExtraConstants {
 
     const val EXTRA_DIARY = "EXTRA_DIARY"
     const val EXTRA_DAILY_TODO_BUNDLE = "EXTRA_DAILY_TODO_BUNDLE"
+    const val EXTRA_DAILY_HAPPY_POINT_BUNDLE = "EXTRA_DAILY_HAPPY_POINT_BUNDLE"
 }
