@@ -30,7 +30,7 @@ class HappyPointListActivity : BaseActivity<ActivityHappyPointListBinding>(R.lay
 
     private fun loadData() {
         // 데이터 리스트
-        val dailyHappyPointBundle = intent.getParcelableExtra<DailyHappyPointBundle>(ExtraConstants.EXTRA_DAILY_TODO_BUNDLE)
+        val dailyHappyPointBundle = intent.getParcelableExtra<DailyHappyPointBundle>(ExtraConstants.EXTRA_DAILY_HAPPY_POINT_BUNDLE)
         if(dailyHappyPointBundle == null) {
             finish()
             return

@@ -12,6 +12,7 @@ import app.sosocom.smallstep.presentation.base.CustomAlertDialog
 import app.sosocom.smallstep.presentation.databinding.ActivityMainBinding
 import app.sosocom.smallstep.presentation.ui.diary.DiaryActivity
 import app.sosocom.smallstep.presentation.ui.diary.DiaryEditActivity
+import app.sosocom.smallstep.presentation.ui.happy_point.HappyPointListActivity
 import app.sosocom.smallstep.presentation.ui.main.adapter.CustomDayBinder
 import app.sosocom.smallstep.presentation.ui.main.adapter.CustomMonthHeaderBinder
 import app.sosocom.smallstep.presentation.ui.todo.TodoListActivity
@@ -112,6 +113,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
                 viewModel.setSelectedDate(afterDate)
             }
+        }
+
+        // 행복점수 클릭
+        binding.cardHappyPoint.setOnClickListener {
+            val happyPointBundle = viewModel.selDailyWriteBundle.value?.dailyHappyPointBundle ?: return@setOnClickListener
+
+            val intent = Intent(this, HappyPointListActivity::class.java)
+            intent.putExtra(ExtraConstants.EXTRA_DAILY_HAPPY_POINT_BUNDLE, happyPointBundle)
+            startActivity(intent)
         }
 
         // 할일 목록 클릭
