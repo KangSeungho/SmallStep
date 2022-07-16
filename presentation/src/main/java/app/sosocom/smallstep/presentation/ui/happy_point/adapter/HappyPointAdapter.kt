@@ -20,6 +20,12 @@ class HappyPointAdapter: ListAdapter<HappyPoint, HappyPointAdapter.HappyPointVie
         }
     }
 
+    private var onItemClickListener: ((HappyPoint) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (HappyPoint) -> Unit) {
+        onItemClickListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HappyPointViewHolder {
         return HappyPointViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_happy_point, parent, false))
     }
@@ -35,6 +41,8 @@ class HappyPointAdapter: ListAdapter<HappyPoint, HappyPointAdapter.HappyPointVie
             binding ?: return
 
             binding.item = happyPoint
+
+            binding.root.setOnClickListener { onItemClickListener?.invoke(happyPoint) }
         }
     }
 }
