@@ -21,6 +21,7 @@
             android:hint="@string/happy_point_info">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -36,6 +37,7 @@
             android:hint="@string/happy_point_comment_info">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -44,12 +46,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <SeekBar
+            android:id="@+id/seekbar_point"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="15dp"
+            android:progress="10"
+            android:max="10"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
