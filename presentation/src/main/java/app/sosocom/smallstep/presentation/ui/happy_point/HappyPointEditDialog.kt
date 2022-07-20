@@ -5,8 +5,10 @@ import app.sosocom.smallstep.domain.model.HappyPoint
 import app.sosocom.smallstep.presentation.R
 import app.sosocom.smallstep.presentation.base.BaseBottomSheetDialog
 import app.sosocom.smallstep.presentation.databinding.DialogHappyPointEditBinding
+import java.time.LocalDate
+import java.time.LocalDateTime
 
-class HappyPointEditDialog(context: Context) : BaseBottomSheetDialog<DialogHappyPointEditBinding>(context, R.layout.dialog_happy_point_edit) {
+class HappyPointEditDialog(context: Context, val baseDate: LocalDate) : BaseBottomSheetDialog<DialogHappyPointEditBinding>(context, R.layout.dialog_happy_point_edit) {
     var happyPoint: HappyPoint? = null
         set(value) {
             field = value
@@ -15,14 +17,24 @@ class HappyPointEditDialog(context: Context) : BaseBottomSheetDialog<DialogHappy
             binding.seekbarPoint.progress = value?.point?.times(2)?.toInt() ?: 0
         }
 
-    fun setOnDoneListener(listener: (HappyPoint?, String, String, Float) -> Unit) {
+    fun setOnDoneListener(listener: (HappyPoint) -> Unit) {
         binding.btnDone.setOnClickListener {
-            listener(
-                happyPoint,
-                (binding.editContent.text ?: "").toString(),
-                (binding.editComment.text ?: "").toString(),
-                binding.seekbarPoint.progress.div(2f)
+            val editContent = binding.editContent.text
+            if(editContent.isNullOrEmpty()) return@setOnClickListener
+
+            val happyPoint = happyPoint?.apply {
+                content = editContent.toString()
+                comment = binding.editComment.text.toString()
+                point = binding.seekbarPoint.progress.div(2f)
+            } ?: HappyPoint(
+                content = editContent.toString(),
+                comment = binding.editComment.text.toString(),
+                point = binding.seekbarPoint.progress.div(2f),
+                baseDate = baseDate,
+                createdAt = LocalDateTime.now()
             )
+
+            listener(happyPoint)
 
             dismiss()
         }

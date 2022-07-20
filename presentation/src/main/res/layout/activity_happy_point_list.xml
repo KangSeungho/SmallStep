@@ -55,7 +55,7 @@
                 tools:itemCount="5"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btn_add_todo"
+                android:id="@+id/btn_add_happy_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
