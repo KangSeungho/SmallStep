@@ -9,7 +9,7 @@ interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTodo(todo: TodoEntity): Long
 
-    @Query("SELECT * from todo where :startTime <= baseDate and baseDate <= :endTime")
+    @Query("SELECT * from todo where :startTime <= base_date and base_date <= :endTime")
     suspend fun getAllTodo(startTime: Long, endTime: Long): List<TodoEntity>
 
     @Delete
