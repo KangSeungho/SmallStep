@@ -84,9 +84,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 val title = "${month.year}년 ${month.month}월"
                 binding.textCurrentMonth.text = title
 
-                // 이미 선택된 날짜가 있고 달이 바뀌면 선택된 날짜를 1일로 자동 변경
-                if(customDayBinder.selectedDate != null) {
-                    customDayBinder.selectedDate = LocalDate.of(month.year, month.month, 1)
+                customDayBinder.selectedDate = when {
+                    // 이번 달로 바뀌면 오늘 날짜로 기본 선택
+                    month.month == LocalDate.now().monthValue -> LocalDate.now()
+
+                    // 다른 달로 바뀌면 1일을 기본 선택
+                    else -> LocalDate.of(month.year, month.month, 1)
                 }
 
                 // 데이터 초기화
