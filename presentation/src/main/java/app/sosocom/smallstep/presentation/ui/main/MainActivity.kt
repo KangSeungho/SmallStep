@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import app.sosocom.smallstep.domain.model.DailyHappyPointBundle
 import app.sosocom.smallstep.domain.model.DailyTodoBundle
 import app.sosocom.smallstep.presentation.base.BaseActivity
 import app.sosocom.smallstep.presentation.R
@@ -164,6 +165,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     ObjectAnimator.ofFloat(binding.floatingActionButton, View.ROTATION, 45f, 0f).apply { start() }
                 }
             }
+        }
+
+        // 행복점수 추가 버튼
+        binding.btnAddHappyPoint.setOnClickListener {
+            // 추가 플로팅 버튼 닫기 처리
+            binding.floatingActionButton.performClick()
+
+            val selectedDate = customDayBinder.selectedDate ?: LocalDate.now()
+
+            val happyPointBundle = viewModel.selDailyWriteBundle.value?.dailyHappyPointBundle ?: DailyHappyPointBundle(ArrayList(), selectedDate)
+
+            val intent = Intent(this, HappyPointListActivity::class.java)
+            intent.putExtra(ExtraConstants.EXTRA_DAILY_HAPPY_POINT_BUNDLE, happyPointBundle)
+            startActivity(intent)
+            pushActivity()
         }
 
         // 할일 추가 버튼
