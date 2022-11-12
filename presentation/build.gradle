@@ -48,6 +48,7 @@ dependencies {
     implementation (AndroidX.MATERIAL)
     implementation (AndroidX.ACTIVITY_KTX)
     implementation (AndroidX.FRAGMENT_KTX)
+    implementation (AndroidX.NAVIGATION_COMPOSE)
 
     // AndroidLifeCycle
     implementation (AndroidLifeCycle.VIEW_MODEL)

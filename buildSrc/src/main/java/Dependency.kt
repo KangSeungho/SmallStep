@@ -1,7 +1,3 @@
-object Kotlin {
-    const val SDK = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
-}
-
 object AndroidX {
     const val CORE = "androidx.core:core-ktx:1.7.0"
     const val APP_COMPAT = "androidx.appcompat:appcompat:1.4.1"
@@ -11,6 +7,8 @@ object AndroidX {
     // Activity, Fragment 확장 함수 라이브러리
     const val ACTIVITY_KTX = "androidx.activity:activity-ktx:1.4.0"
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.4.1"
+
+    const val NAVIGATION_COMPOSE = "androidx.navigation:navigation-compose:2.5.3"
 }
 
 object AndroidLifeCycle {
@@ -24,7 +22,7 @@ object AndroidTest {
 }
 
 object DaggerHilt {
-    private const val version = "2.41"
+    private const val version = "2.44.1"
 
     const val PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:$version"
 
