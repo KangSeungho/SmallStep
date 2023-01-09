@@ -11,6 +11,17 @@ object AndroidX {
     const val NAVIGATION_COMPOSE = "androidx.navigation:navigation-compose:2.5.3"
 }
 
+object Compose {
+    private const val version = "1.3.1"
+
+    const val UI = "androidx.compose.ui:ui:$version"
+    const val MATERIAL3 = "androidx.compose.material3:material3:1.0.1"
+    const val PREVIEW = "androidx.compose.ui:ui-tooling-preview:$version"
+    const val MDC_THEME = "com.google.android.material:compose-theme-adapter:1.2.0"
+    const val APP_COMPAT_THEME = "com.google.accompanist:accompanist-appcompat-theme:0.25.1"
+    const val HILT = "androidx.hilt:hilt-navigation-compose:1.0.0"
+}
+
 object AndroidLifeCycle {
     const val VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     const val LIVEDATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"

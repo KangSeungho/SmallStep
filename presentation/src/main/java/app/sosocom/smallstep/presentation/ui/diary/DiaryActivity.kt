@@ -3,8 +3,10 @@ package app.sosocom.smallstep.presentation.ui.diary
 import android.content.Intent
 import android.os.Bundle
 import android.widget.PopupMenu
+import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import app.sosocom.smallstep.domain.model.Diary
 import app.sosocom.smallstep.domain.util.Log
@@ -33,9 +35,9 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>(R.layout.activity_diary
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding.lifecycleOwner = this
-        binding.vm = viewModel
+//        setContent {
+//            DiaryScreen()
+//        }
 
         initActionBar()
         loadData()
