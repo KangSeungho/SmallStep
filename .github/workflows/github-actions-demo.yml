@@ -30,4 +30,11 @@ jobs:
       - name: Qa commit message parse
         if: steps.check_commit.outputs.should_upload == 'true'
         run: |
-          echo "You can upload the app from Firebase App Distribution"
+          COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.sha }})
+          COMMIT_MESSAGE_LINES=($COMMIT_MESSAGE)
+          RELEASE_NOTE=""
+          for ((i=2; i<${#COMMIT_MESSAGE_LINES[@]}; i++)); do
+            RELEASE_NOTE="$RELEASE_NOTE ${COMMIT_MESSAGE_LINES[i]}"
+          done
+          RELEASE_NOTE=$(echo "$RELEASE_NOTE" | sed 's/^[[:space:]]*//')
+          echo "Release Note: $RELEASE_NOTE"
